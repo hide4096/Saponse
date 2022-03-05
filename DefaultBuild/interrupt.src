@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 16:18:30
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 17:16:09
 
 ;*** CPU TYPE ***
 
@@ -526,7 +526,7 @@ L84:	; if_then_bb261.split4
 		MOV.L #_I_speed, R15
 		FSUB [R15].L, R14
 		FMUL #3F800000H, R14
-		FMUL #3F000000H, R14
+		FMUL #3F800000H, R14
 		FDIV #3F800000H, R14
 		MOV.L #_V_r, R15
 		FADD [R15].L, R14
@@ -538,7 +538,7 @@ L85:	; if_then_bb261.split5
 		MOV.L #_I_speed, R15
 		FSUB [R15].L, R14
 		FMUL #3F800000H, R14
-		FMUL #3F000000H, R14
+		FMUL #3F800000H, R14
 		FDIV #3F800000H, R14
 		MOV.L #_V_l, R15
 		FADD [R15].L, R14
@@ -550,7 +550,7 @@ L86:	; if_then_bb261.split6
 		MOV.L #_speed, R15
 		FSUB [R15].L, R14
 		FMUL #3F800000H, R14
-		FMUL #0C0200000H, R14
+		FMUL #0C0400000H, R14
 		FDIV #3F800000H, R14
 		MOV.L #_V_r, R15
 		FADD [R15].L, R14
@@ -562,7 +562,7 @@ L87:	; if_then_bb261.split7
 		MOV.L #_speed, R15
 		FSUB [R15].L, R14
 		FMUL #3F800000H, R14
-		FMUL #0C0200000H, R14
+		FMUL #0C0400000H, R14
 		FDIV #3F800000H, R14
 		MOV.L #_V_l, R15
 		FADD [R15].L, R14
@@ -596,7 +596,7 @@ L90:	; if_then_bb261.split10
 		MOV.L #_I_ang_vel, R15
 		FSUB [R15].L, R14
 		FMUL #3F800000H, R14
-		FMUL #3CA3D70AH, R14
+		FMUL #3CCCCCCDH, R14
 		MOV.L #_V_r, R15
 		FADD [R15].L, R14
 		MOV.L R14, [R15]
@@ -607,7 +607,7 @@ L91:	; if_then_bb261.split11
 		MOV.L #_I_ang_vel, R15
 		FSUB [R15].L, R14
 		BNOT #1FH, R14
-		FMUL #3CA3D70AH, R14
+		FMUL #3CCCCCCDH, R14
 		MOV.L #_V_l, R15
 		FADD [R15].L, R14
 		MOV.L R14, [R15]
