@@ -488,7 +488,6 @@ void search_adachi(int gx, int gy)
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}
-				
 				do_back-=2;
 				break;
 			
