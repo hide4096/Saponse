@@ -52,7 +52,7 @@
 #define FAST_SPEED	(0.60)				//最短走行の速度	[m/s]
 #define FAST_ACCEL	(2.5)				//最短走行の加速度	[m/s^2]
 #define MIN_SPEED	(0.1)				//最低速度	[m/s]
-#define INT_BACK 5
+#define INT_BACK 4
 
 #define TURN_ACCEL	(PI*3)				//超信地旋回の加速度	[rad/s^2]
 #define	TURN_SPEED	(PI*4)				//超信地旋回の最高速度	[rad/s]

@@ -489,7 +489,7 @@ void search_adachi(int gx, int gy)
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}
 				
-				do_back--;
+				do_back-=2;
 				break;
 			
 			case right:
@@ -507,7 +507,7 @@ void search_adachi(int gx, int gy)
 					do_back = INT_BACK;
 				}else{
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
-					do_back-=3;
+					do_back--;
 				}
 				break;
 			
@@ -526,7 +526,7 @@ void search_adachi(int gx, int gy)
 					do_back = INT_BACK;
 				}else{
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
-					do_back-=3;
+					do_back--;
 				}
 				break;
 			
@@ -546,7 +546,7 @@ void search_adachi(int gx, int gy)
 				}else{
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 				}
-				do_back--;
+				do_back-=2;
 				break;
 		}
 
