@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 15:41:38
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 16:04:39
 
 ;*** CPU TYPE ***
 
@@ -176,8 +176,8 @@ L34:	; switch_clause_bb35
 		MUL #5AH, R1
 		ITOF R1, R1
 		MOV.L #00000000H, R4
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
+		MOV.L #3FC00000H, R3
+		MOV.L #40400000H, R2
 		BSR _straight_NC
 L35:	; switch_clause_bb35.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
@@ -201,7 +201,7 @@ L37:	; if_then_bb
 		BSR _back
 L38:	; if_then_bb.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F19999AH, R3
+		MOV.L #3F000000H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42820000H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",82
@@ -210,7 +210,7 @@ L38:	; if_then_bb.split
 		BRA L40
 L39:	; if_else_bb
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F19999AH, R3
+		MOV.L #3F000000H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",84
@@ -226,8 +226,8 @@ L41:	; switch_clause_bb42
 		MUL #5AH, R1
 		ITOF R1, R1
 		MOV.L #00000000H, R4
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
+		MOV.L #3FC00000H, R3
+		MOV.L #40400000H, R2
 		BSR _straight_NC
 L42:	; switch_clause_bb42.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
@@ -252,8 +252,8 @@ L44:	; if_then_bb50
 L45:	; if_then_bb50.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R4
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
+		MOV.L #3FC00000H, R3
+		MOV.L #40400000H, R2
 		MOV.L #42820000H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",94
 		BSR _straight_NC
@@ -261,8 +261,8 @@ L45:	; if_then_bb50.split
 L46:	; if_else_bb51
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R4
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
+		MOV.L #3FC00000H, R3
+		MOV.L #40400000H, R2
 		MOV.L #42340000H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",96
 		BSR _straight_NC
@@ -276,8 +276,8 @@ L48:	; switch_clause_bb53
 		MUL #5AH, R1
 		ITOF R1, R1
 		MOV.L #00000000H, R4
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
+		MOV.L #3FC00000H, R3
+		MOV.L #40400000H, R2
 		BSR _straight_NC
 L49:	; switch_clause_bb53.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
@@ -325,7 +325,7 @@ L56:	; if_then_bb71.split
 L57:	; if_then_bb71.split4
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",108
 		MOV.L #_do_back, R14
-		MOV.L #00000004H, [R14]
+		MOV.L #00000005H, [R14]
 L58:	; if_break_bb72
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000001H, R4
@@ -411,8 +411,8 @@ L74:	; bb108
 		MUL #5AH, R1
 		ITOF R1, R1
 		MOV.L #00000000H, R4
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
+		MOV.L #3FC00000H, R3
+		MOV.L #40400000H, R2
 		BSR _straight
 		RTSD #14H
 		.END

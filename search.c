@@ -507,7 +507,7 @@ void search_adachi(int gx, int gy)
 					do_back = INT_BACK;
 				}else{
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
-					do_back-=2;
+					do_back-=3;
 				}
 				break;
 			
@@ -526,7 +526,7 @@ void search_adachi(int gx, int gy)
 					do_back = INT_BACK;
 				}else{
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
-					do_back-=2;
+					do_back-=3;
 				}
 				break;
 			
