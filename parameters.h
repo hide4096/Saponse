@@ -26,8 +26,8 @@
 #define TH_SEN_FR	21				//壁があるか否かの閾値	
 #define TH_SEN_FL	17				//壁があるか否かの閾値
 
-#define LEFT_90 3310
-#define RIGHT_90 3490
+#define LEFT_90 2810
+#define RIGHT_90 2990
 
 #define CONTH_SEN_R	TH_SEN_R			//制御をかけるか否かの閾値
 #define CONTH_SEN_L	TH_SEN_L			//制御をかけるか否かの閾値
@@ -50,7 +50,7 @@
 #define SEARCH_SPEED	(0.60)				//探索走行の速度	[m/s]
 #define SEARCH_ACCEL	(2.5)				//探索走行の加速度	[m/s^2]
 #define FAST_SPEED	(1.0)				//最短走行の速度	[m/s]
-#define FAST_ACCEL	(2.5)				//最短走行の加速度	[m/s^2]
+#define FAST_ACCEL	(5.0)				//最短走行の加速度	[m/s^2]
 #define MIN_SPEED	(0.1)				//最低速度	[m/s]
 #define INT_BACK 4
 
