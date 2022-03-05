@@ -580,6 +580,5 @@ void search_adachi(int gx, int gy)
 	}
 	set_wall(mypos.x,mypos.y);		
 	straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);	
-
 }
 
