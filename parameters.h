@@ -42,15 +42,15 @@
 #define SPEED_KI	(1.2)				//Iゲイン
 #define SPEED_KD	(4.0)				//Dゲイン　
 //車体中心における回転方向速度に関するフィードバックゲイン
-#define OMEGA_KP	(70.0)				//Pゲイン
-#define OMEGA_KI	(2.5)				//Iゲイン
-#define OMEGA_KD	(0.5)				//Dゲイン
+#define OMEGA_KP	(75.0)				//Pゲイン
+#define OMEGA_KI	(2.8)				//Iゲイン
+#define OMEGA_KD	(0.8)				//Dゲイン
 
 //走行パラメータ
 #define SEARCH_SPEED	(0.60)				//探索走行の速度	[m/s]
 #define SEARCH_ACCEL	(2.5)				//探索走行の加速度	[m/s^2]
-#define FAST_SPEED	(1.0)				//最短走行の速度	[m/s]
-#define FAST_ACCEL	(3.0)				//最短走行の加速度	[m/s^2]
+#define FAST_SPEED	(1.5)				//最短走行の速度	[m/s]
+#define FAST_ACCEL	(2.5)				//最短走行の加速度	[m/s^2]
 #define MIN_SPEED	(0.1)				//最低速度	[m/s]
 #define INT_BACK 3
 
