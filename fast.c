@@ -20,6 +20,7 @@ void fast_run(int x, int y)
 	//現在の向きから、次に行くべき方向へ向く
 	switch(get_nextdir(x,y,MASK_SECOND,&glob_nextdir))	//次に行く方向を戻り値とする関数を呼ぶ
 	{
+		case front:
 			straight_count++;			//前向きだった場合は直線を走る距離を伸ばす
 			break;
 		

@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 16:04:39
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 16:08:49
 
 ;*** CPU TYPE ***
 
@@ -6,17 +6,7 @@
 
 ;*** COMMAND PARAMETER ***
 
-;HM_StarterKit.c
-;init.c
-;spi.c
-;interrupt.c
-;glob_var.c
 ;run.c
-;interface.c
-;search.c
-;DataFlash.c
-;fast.c
-;adjust.c
 ;-isa=rxv1
 ;-fpu
 ;-lang=c99
@@ -134,7 +124,7 @@ L24:	; bb16
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",50
 		MOV.L #_len_target, R14
 		MOV.L [R14], R14
-		FADD #0C1C80000H, R14
+		FADD #0C1200000H, R14
 		MOV.L #_len_mouse, R15
 		FSUB [R15].L, R14
 		MOV.L #_tar_speed, R15

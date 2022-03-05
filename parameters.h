@@ -47,8 +47,8 @@
 #define OMEGA_KD	(0.5)				//Dゲイン
 
 //走行パラメータ
-#define SEARCH_SPEED	(0.50)				//探索走行の速度	[m/s]
-#define SEARCH_ACCEL	(2.0)				//探索走行の加速度	[m/s^2]
+#define SEARCH_SPEED	(0.60)				//探索走行の速度	[m/s]
+#define SEARCH_ACCEL	(2.5)				//探索走行の加速度	[m/s^2]
 #define FAST_SPEED	(1.5)				//最短走行の速度	[m/s]
 #define FAST_ACCEL	(3.0)				//最短走行の加速度	[m/s^2]
 #define MIN_SPEED	(0.1)				//最低速度	[m/s]
