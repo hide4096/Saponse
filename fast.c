@@ -88,7 +88,7 @@ void fast_run(int x, int y)
 		switch(get_nextdir(x,y,MASK_SECOND,&glob_nextdir))	//次に行く方向を戻り値とする関数を呼ぶ
 		{
 			case front:
-				if(isWallonSide(left) && isWallonSide(right) && sen_fr.is_control && sen_fl.is_control){
+				if(isWallonSide(left) && isWallonSide(right)){
 					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
