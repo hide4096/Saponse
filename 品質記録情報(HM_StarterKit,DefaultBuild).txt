@@ -1,5 +1,5 @@
 品質記録情報
-2022年3月5日 17:51:46
+2022年3月5日 18:37:05
 
 ------ ビルド開始(HM_StarterKit, DefaultBuild) ------
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\ccrx.exe HM_StarterKit.c init.c spi.c interrupt.c glob_var.c run.c interface.c search.c DataFlash.c fast.c adjust.c -isa=rxv1 -fpu -lang=c99 -include=. -output=obj -obj_path=DefaultBuild -asm_path=DefaultBuild -debug -g_line -optimize=0 -nologo
@@ -23,15 +23,20 @@ parameters.h(4):W0520014:Extra text after expected end of preprocessing directiv
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
 DataFlash.c(23):W0520550:Variable "isErr" was set but never used
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-fast.c(81):W0520223:Function "isWallonSide" declared implicitly
-fast.c(93):W0520223:Function "isWallonSide" declared implicitly
-fast.c(106):W0520223:Function "isWallonSide" declared implicitly
+fast.c(23):W0520223:Function "isWallonSide" declared implicitly
+fast.c(33):W0520223:Function "isWallonSide" declared implicitly
+fast.c(44):W0520223:Function "isWallonSide" declared implicitly
+fast.c(91):W0520223:Function "isWallonSide" declared implicitly
+fast.c(101):W0520223:Function "isWallonSide" declared implicitly
+fast.c(112):W0520223:Function "isWallonSide" declared implicitly
+fast.c(124):W0520223:Function "isWallonSide" declared implicitly
+fast.c(129):W0520223:Function "isWallonSide" declared implicitly
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\rlink.exe -subcommand=DefaultBuild\HM_StarterKit.clnk
 W0561016:The evaluation version of CC-RX V3 is valid for the remaining 52 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
 W0561016:The evaluation version of CC-RX V3 is valid for the remaining 52 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
 Renesas Optimizing Linker Completed
------- ビルド終了(エラー:0個, 警告:26個)(HM_StarterKit, DefaultBuild) ------
+------ ビルド終了(エラー:0個, 警告:31個)(HM_StarterKit, DefaultBuild) ------
 
 --- CommandFile 1 ---
 DefaultBuild\HM_StarterKit.clnk :
@@ -70,8 +75,8 @@ DefaultBuild\HM_StarterKit.clnk :
 
 
 --- SHA1 hash value of output files ---
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: 2abb77c993100d5a2bfe37d245c180e867f56917
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: 62999bd1cc33ee46b66c3dda8a76f1d9a293f493
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: 02e57b91bf093fd489bdd94a03d777677d0f0faf
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: 524f5ceacb21b687eb85e8e0472db7d8f2d6fdbb
 
 
 --- システム情報 ---
@@ -99,11 +104,11 @@ C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBui
  C:\Program Files (x86)\Renesas Electronics\CS+\CC
 *メモリ使用量
  *プライベート・ワーキング・セット
-  328 MB
+  326 MB
  *GDIオブジェクト数
   2146
  *USERオブジェクト数
-  1134
+  1138
  *開いているファイル
   18 editors, 18 files, 324 KB
 

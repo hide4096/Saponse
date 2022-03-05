@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 17:51:37
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 18:37:00
 
 ;*** CPU TYPE ***
 
@@ -526,7 +526,7 @@ L84:	; if_then_bb261.split4
 		MOV.L #_I_speed, R15
 		FSUB [R15].L, R14
 		FMUL #3F800000H, R14
-		FMUL #3F800000H, R14
+		FMUL #3F99999AH, R14
 		FDIV #3F800000H, R14
 		MOV.L #_V_r, R15
 		FADD [R15].L, R14
@@ -538,7 +538,7 @@ L85:	; if_then_bb261.split5
 		MOV.L #_I_speed, R15
 		FSUB [R15].L, R14
 		FMUL #3F800000H, R14
-		FMUL #3F800000H, R14
+		FMUL #3F99999AH, R14
 		FDIV #3F800000H, R14
 		MOV.L #_V_l, R15
 		FADD [R15].L, R14

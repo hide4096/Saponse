@@ -101,11 +101,11 @@ void running(float len, float acc, float max_sp, float end_sp,t_bool mode,unsign
 }
 
 void straight(float len, float acc, float max_sp, float end_sp){
-	running(len,acc,max_sp,end_sp,true,0);
+	running(len,acc,max_sp,end_sp,true,3000);
 }
 
 void straight_NC(float len, float acc, float max_sp, float end_sp){
-	running(len,acc,max_sp,end_sp,false,0);
+	running(len,acc,max_sp,end_sp,false,3000);
 }
 extern volatile unsigned int timer;
 void back(float len){

@@ -158,5 +158,5 @@ void fast_run(int x, int y)
 
 		}
 	}
-	straight(SECTION,FAST_ACCEL,FAST_SPEED,0.0);
+	straight(HALF_SECTION,FAST_ACCEL,FAST_SPEED,0.0);
 }
