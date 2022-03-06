@@ -38,9 +38,9 @@
 //Iゲイン　最後に調整する	積分値が合うようにする程度。
 //Dゲイン　二番目に調整する。	P制御によって発生した振動を抑えられる程度に調整
 //車体中心における並進方向速度に関するフィードバックゲイン
-#define SPEED_KP	(35.0)				//Pゲイン
-#define SPEED_KI	(1.0)				//Iゲイン
-#define SPEED_KD	(4.5)				//Dゲイン　
+#define SPEED_KP	(0.0)				//Pゲイン
+#define SPEED_KI	(0.0)				//Iゲイン
+#define SPEED_KD	(0.0)				//Dゲイン　
 //車体中心における回転方向速度に関するフィードバックゲイン
 #define OMEGA_KP	(30.0)				//Pゲイン
 #define OMEGA_KI	(3.0)				//Iゲイン
