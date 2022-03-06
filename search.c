@@ -475,14 +475,14 @@ void search_adachi(int gx, int gy)
 
 	}
 
-	
-	while((mypos.x != gx) || (mypos.y != gy)){				
+	while((mypos.x != gx) || (mypos.y != gy)){			
 
 		set_wall(mypos.x,mypos.y);					
 
 		switch(get_nextdir(gx,gy,MASK_SEARCH,&glob_nextdir))		
 		{
 			case front:
+				len_mouse-=SLIP_DIST;
 				if(isWallonSide(left) && isWallonSide(right) && sen_fr.is_control && sen_fl.is_control){
 					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
