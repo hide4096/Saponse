@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 18:37:00
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  06-Mar-2022 16:10:36
 
 ;*** CPU TYPE ***
 
@@ -134,7 +134,7 @@ L24:	; bb16
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",50
 		MOV.L #_len_target, R14
 		MOV.L [R14], R14
-		FADD #0C1200000H, R14
+		FDIV #40000000H, R14
 		MOV.L #_len_mouse, R15
 		FSUB [R15].L, R14
 		MOV.L #_tar_speed, R15
@@ -203,13 +203,13 @@ L36:	; if_break_bb
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",58
 		MOV.L #_sen_fr, R14
 		MOV.W [R14], R14
-		CMP #0BAFH, R14
+		CMP #0DA3H, R14
 		BLT L39
 L37:	; bb70
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",0
 		MOV.L #_sen_fl, R14
 		MOV.W [R14], R14
-		CMP #0AFBH, R14
+		CMP #0CEFH, R14
 		BLT L39
 L38:	; bb75
 		MOV.L #00000001H, [R0]
@@ -553,7 +553,7 @@ _turn:
 		MOV.L R2, 10H[R0]
 		MOV.L R3, 0CH[R0]
 		MOV.W R4, 0AH[R0]
-		MOV.L #00000032H, R1
+		MOV.L #00000000H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",143
 		BSR _wait_ms
 L98:	; entry.split
@@ -830,8 +830,6 @@ L148:	; bb139.split19
 		MOV.L #_len_mouse, R14
 		MOV.L #00000000H, [R14]
 L149:	; bb139.split20
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",0
-		MOV.L #00000032H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",218
 		BSR _wait_ms
 		RTSD #18H

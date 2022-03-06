@@ -47,7 +47,7 @@ void running(float len, float acc, float max_sp, float end_sp,t_bool mode,unsign
 
 	if(end_speed == 0.0){	//最終的に停止する場合
 		//減速処理を始めるべき位置まで加速、定速区間を続行
-		while( ((len_target - 10) - len_mouse) >  1000.0*((float)(tar_speed * tar_speed) - (float)(end_speed * end_speed))/(float)(2.0*accel));
+		while( ((len_target / 2) - len_mouse) >  1000.0*((float)(tar_speed * tar_speed) - (float)(end_speed * end_speed))/(float)(2.0*accel));
 		//減速処理開始
 		accel = -acc;					//減速するために加速度を負の値にする	
 		while(len_mouse < (len_target + 5)){		//停止したい距離の少し手前まで継続

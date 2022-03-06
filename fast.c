@@ -97,14 +97,24 @@ void fast_run(int x, int y)
 			
 			case right:
 				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
-				turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);				
-				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+				turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
+				if(isWallonSide(left)){
+					back(-40);
+					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+				}else{
+					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+				}	
 				break;
 			
 			case left:
 				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
-				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+				if(isWallonSide(right)){
+					back(-40);
+					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+				}else{
+					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+				}	
 				break;
 			
 			case rear:

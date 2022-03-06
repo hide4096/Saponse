@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  05-Mar-2022 18:37:00
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  06-Mar-2022 16:10:36
 
 ;*** CPU TYPE ***
 
@@ -142,8 +142,8 @@ L27:	; if_then_bb.split13
 		MOV.L #00000000H, [R14]
 L28:	; if_then_bb.split14
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\HM_StarterKit.c",0
-		MOV.L #00000000H, R2
-		MOV.L #00000008H, R1
+		MOV.L #0000000AH, R2
+		MOV.L #00000007H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\HM_StarterKit.c",89
 		BSR _search_adachi
 L29:	; if_then_bb.split15
@@ -267,8 +267,8 @@ L53:	; if_then_bb36.split36
 		MOV.L #00000000H, [R14]
 L54:	; if_then_bb36.split37
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\HM_StarterKit.c",0
-		MOV.L #00000000H, R2
-		MOV.L #00000008H, R1
+		MOV.L #0000000AH, R2
+		MOV.L #00000007H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\HM_StarterKit.c",129
 		BSR _fast_run
 L55:	; if_then_bb36.split38
@@ -393,8 +393,8 @@ L79:	; if_then_bb58.split59
 		MOV.L #00000000H, [R14]
 L80:	; if_then_bb58.split60
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\HM_StarterKit.c",0
-		MOV.L #00000000H, R2
-		MOV.L #00000008H, R1
+		MOV.L #0000000AH, R2
+		MOV.L #00000007H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\HM_StarterKit.c",169
 		BSR _search_lefthand
 L81:	; if_then_bb58.split61
