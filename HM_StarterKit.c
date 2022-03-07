@@ -219,7 +219,7 @@ void main(void)
 				if(sen_fr.value + sen_fl.value + sen_r.value + sen_l.value > SEN_DECISION * 4){
 					BEEP();
 					wait_ms(500);
-					running(100,2.0,1.0,0,false,0);	
+					while(true) run_mode = STRAIGHT_MODE;
 				}
 				
 				break;

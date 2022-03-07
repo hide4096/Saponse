@@ -38,28 +38,22 @@
 //Iゲイン　最後に調整する	積分値が合うようにする程度。
 //Dゲイン　二番目に調整する。	P制御によって発生した振動を抑えられる程度に調整
 //車体中心における並進方向速度に関するフィードバックゲイン
-#define SPEED_KP	(0.0)				//Pゲイン
-#define SPEED_KI	(0.0)				//Iゲイン
-#define SPEED_KD	(0.0)				//Dゲイン　
+#define SPEED_KP	(15.0)				//Pゲイン
+#define SPEED_KI	(1.0)				//Iゲイン
+#define SPEED_KD	(4.0)				//Dゲイン　
 //車体中心における回転方向速度に関するフィードバックゲイン
-
-/*
 #define OMEGA_KP	(30.0)				//Pゲイン
-#define OMEGA_KI	(3.0)				//Iゲイン
-#define OMEGA_KD	(2.0)				//Dゲイン
-*/
-#define OMEGA_KP	(0.0)				//Pゲイン
-#define OMEGA_KI	(0.0)				//Iゲイン
-#define OMEGA_KD	(0.0)				//Dゲイン
+#define OMEGA_KI	(5.5)				//Iゲイン
+#define OMEGA_KD	(2.5)				//Dゲイン
 
 //走行パラメータ
-#define SEARCH_SPEED	(0.40)				//探索走行の速度	[m/s]
-#define SEARCH_ACCEL	(1.0)				//探索走行の加速度	[m/s^2]
+#define SEARCH_SPEED	(0.45)				//探索走行の速度	[m/s]
+#define SEARCH_ACCEL	(2.0)				//探索走行の加速度	[m/s^2]
 #define FAST_SPEED	(1.0)				//最短走行の速度	[m/s]
 #define FAST_ACCEL	(2.5)				//最短走行の加速度	[m/s^2]
 #define MIN_SPEED	(0.1)				//最低速度	[m/s]
 #define SLIP_DIST 2
-#define INT_BACK -1
+#define INT_BACK 3
 
 #define TURN_ACCEL	(PI*3)				//超信地旋回の加速度	[rad/s^2]
 #define	TURN_SPEED	(PI*4)				//超信地旋回の最高速度	[rad/s]
@@ -68,8 +62,8 @@
 #define WAIT_TIME	0				//各動作後の待機時間	[ms]
 
 //迷路関連パラメータ
-#define GOAL_X	7		//ゴール座標(x)
-#define GOAL_Y	10		//ゴール座標(y)
+#define GOAL_X	1		//ゴール座標(x)
+#define GOAL_Y	8		//ゴール座標(y)
 
 //決定用センサパラメータ
 #define	SEN_DECISION	2000	//メニュー決定用の光センサ閾値

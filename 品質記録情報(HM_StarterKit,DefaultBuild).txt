@@ -1,5 +1,5 @@
 品質記録情報
-2022年3月6日 16:10:41
+2022年3月7日 13:43:01
 
 ------ ビルド開始(HM_StarterKit, DefaultBuild) ------
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\ccrx.exe HM_StarterKit.c init.c spi.c interrupt.c glob_var.c run.c interface.c search.c DataFlash.c fast.c adjust.c -isa=rxv1 -fpu -lang=c99 -include=. -output=obj -obj_path=DefaultBuild -asm_path=DefaultBuild -debug -g_line -optimize=0 -nologo
@@ -33,8 +33,8 @@ fast.c(124):W0520223:Function "isWallonSide" declared implicitly
 fast.c(129):W0520223:Function "isWallonSide" declared implicitly
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\rlink.exe -subcommand=DefaultBuild\HM_StarterKit.clnk
-W0561016:The evaluation version of CC-RX V3 is valid for the remaining 51 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
-W0561016:The evaluation version of CC-RX V3 is valid for the remaining 51 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
+W0561016:The evaluation version of CC-RX V3 is valid for the remaining 50 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
+W0561016:The evaluation version of CC-RX V3 is valid for the remaining 50 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
 Renesas Optimizing Linker Completed
 ------ ビルド終了(エラー:0個, 警告:31個)(HM_StarterKit, DefaultBuild) ------
 
@@ -75,8 +75,8 @@ DefaultBuild\HM_StarterKit.clnk :
 
 
 --- SHA1 hash value of output files ---
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: adc73702e9753232f15ec29769c9e5fe444f7ffd
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: 077c7b89c7481a44ee6ca1c2bd30118321bbe499
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: 6a6b4f38ad244eb62ab680ee2c0ff82439399f0e
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: 1436d2dfb4e986929abd9a83ffb10c2084b66030
 
 
 --- システム情報 ---
@@ -104,11 +104,11 @@ C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBui
  C:\Program Files (x86)\Renesas Electronics\CS+\CC
 *メモリ使用量
  *プライベート・ワーキング・セット
-  305 MB
+  306 MB
  *GDIオブジェクト数
-  2126
+  2180
  *USERオブジェクト数
-  1139
+  1172
  *開いているファイル
   18 editors, 18 files, 324 KB
 
