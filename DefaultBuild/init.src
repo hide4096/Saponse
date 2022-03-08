@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  07-Mar-2022 13:42:53
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  08-Mar-2022 17:01:12
 
 ;*** CPU TYPE ***
 
@@ -39,6 +39,7 @@
 		.glb	_gyro_x_new
 		.glb	_gyro_ref
 		.glb	_degree
+		.glb	_stlen
 		.glb	_clock_init
 		.glb	_init_cmt
 		.glb	_io_init
@@ -724,9 +725,9 @@ L134:	; bb12.split3
 		BSR _wait_ms
 		RTSD #08H
 _init_all:
-		.STACK	_init_all=8
+		.STACK	_init_all=12
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",287
-		SUB #04H, R0
+		SUB #08H, R0
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",289
 		BSR _clock_init
 L136:	; entry.split
@@ -776,98 +777,117 @@ L148:	; entry.split12
 		BSR _preprocess_spi_gyro_2byte
 L149:	; entry.split13
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",317
-		MOV.L #00000000H, [R0]
+		MOV.L #00000000H, 04H[R0]
 		BRA L151
 L150:	; bb
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",0
-		MOV.L [R0], R1
+		MOV.L 04H[R0], R1
 		ADD #01H, R1
-		MOV.L R1, [R0]
-L151:	; bb3
-		MOV.L [R0], R1
+		MOV.L R1, 04H[R0]
+L151:	; bb5
+		MOV.L 04H[R0], R1
 		CMP #000F4240H, R1
 		BLT L150
-L152:	; bb7
+L152:	; bb9
 		MOV.L #00000601H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",318
 		BSR _preprocess_spi_gyro_2byte
-L153:	; bb7.split
+L153:	; bb9.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",319
-		MOV.L #00000000H, [R0]
+		MOV.L #00000000H, 04H[R0]
 		BRA L155
-L154:	; bb8
+L154:	; bb10
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",0
-		MOV.L [R0], R1
+		MOV.L 04H[R0], R1
 		ADD #01H, R1
-		MOV.L R1, [R0]
-L155:	; bb11
-		MOV.L [R0], R1
+		MOV.L R1, 04H[R0]
+L155:	; bb13
+		MOV.L 04H[R0], R1
 		CMP #000F4240H, R1
 		BLT L154
-L156:	; bb16
+L156:	; bb18
 		MOV.L #00007F20H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",322
 		BSR _preprocess_spi_gyro_2byte
-L157:	; bb16.split
+L157:	; bb18.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",323
-		MOV.L #00000000H, [R0]
+		MOV.L #00000000H, 04H[R0]
 		BRA L159
-L158:	; bb17
+L158:	; bb19
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",0
-		MOV.L [R0], R1
+		MOV.L 04H[R0], R1
 		ADD #01H, R1
-		MOV.L R1, [R0]
-L159:	; bb20
-		MOV.L [R0], R1
+		MOV.L R1, 04H[R0]
+L159:	; bb22
+		MOV.L 04H[R0], R1
 		CMP #000F4240H, R1
 		BLT L158
-L160:	; bb25
+L160:	; bb27
 		MOV.L #00000107H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",324
 		BSR _preprocess_spi_gyro_2byte
-L161:	; bb25.split
+L161:	; bb27.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",325
-		MOV.L #00000000H, [R0]
+		MOV.L #00000000H, 04H[R0]
 		BRA L163
-L162:	; bb26
+L162:	; bb28
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",0
-		MOV.L [R0], R1
+		MOV.L 04H[R0], R1
 		ADD #01H, R1
-		MOV.L R1, [R0]
-L163:	; bb29
-		MOV.L [R0], R1
+		MOV.L R1, 04H[R0]
+L163:	; bb31
+		MOV.L 04H[R0], R1
 		CMP #000F4240H, R1
 		BLT L162
-L164:	; bb34
+L164:	; bb36
 		MOV.L #00007F00H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",326
 		BSR _preprocess_spi_gyro_2byte
-L165:	; bb34.split
+L165:	; bb36.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",327
-		MOV.L #00000000H, [R0]
+		MOV.L #00000000H, 04H[R0]
 		BRA L167
-L166:	; bb35
+L166:	; bb37
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",0
-		MOV.L [R0], R1
+		MOV.L 04H[R0], R1
 		ADD #01H, R1
-		MOV.L R1, [R0]
-L167:	; bb38
-		MOV.L [R0], R1
+		MOV.L R1, 04H[R0]
+L167:	; bb40
+		MOV.L 04H[R0], R1
 		CMP #000F4240H, R1
 		BLT L166
-L168:	; bb43
+L168:	; bb45
 		MOV.L #00000621H, R1
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",329
 		BSR _preprocess_spi_gyro_2byte
-L169:	; bb43.split
+L169:	; bb45.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",331
 		MOV.L #_timer, R14
 		MOV.L #00000000H, [R14]
-L170:	; bb43.split14
+L170:	; bb45.split14
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",334
 		BSR _init_cmt
-L171:	; bb43.split15
+L171:	; bb45.split15
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",337
 		BSR _hw_dflash_init
-		RTSD #04H
+L172:	; bb45.split16
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",340
+		MOV.L #00000000H, [R0]
+		BRA L174
+L173:	; bb46
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",0
+		MOV.L [R0], R1
+		MOV.L #_stlen, R14
+		MOV.L #00000000H, R15
+		MOV.L R15, [R1,R14]
+		MOV.L [R0], R1
+		ADD #01H, R1
+		MOV.L R1, [R0]
+L174:	; bb51
+		MOV.L [R0], R1
+		CMP #0200H, R1
+		BLT L173
+L175:	; return
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\init.c",342
+		RTSD #08H
 		.END

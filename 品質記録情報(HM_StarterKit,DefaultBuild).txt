@@ -1,5 +1,5 @@
 品質記録情報
-2022年3月7日 13:43:01
+2022年3月8日 17:01:18
 
 ------ ビルド開始(HM_StarterKit, DefaultBuild) ------
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\ccrx.exe HM_StarterKit.c init.c spi.c interrupt.c glob_var.c run.c interface.c search.c DataFlash.c fast.c adjust.c -isa=rxv1 -fpu -lang=c99 -include=. -output=obj -obj_path=DefaultBuild -asm_path=DefaultBuild -debug -g_line -optimize=0 -nologo
@@ -23,18 +23,18 @@ parameters.h(4):W0520014:Extra text after expected end of preprocessing directiv
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
 DataFlash.c(23):W0520550:Variable "isErr" was set but never used
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-fast.c(23):W0520223:Function "isWallonSide" declared implicitly
-fast.c(33):W0520223:Function "isWallonSide" declared implicitly
-fast.c(44):W0520223:Function "isWallonSide" declared implicitly
-fast.c(91):W0520223:Function "isWallonSide" declared implicitly
-fast.c(101):W0520223:Function "isWallonSide" declared implicitly
-fast.c(112):W0520223:Function "isWallonSide" declared implicitly
-fast.c(124):W0520223:Function "isWallonSide" declared implicitly
-fast.c(129):W0520223:Function "isWallonSide" declared implicitly
+fast.c(59):W0520223:Function "isWallonSide" declared implicitly
+fast.c(69):W0520223:Function "isWallonSide" declared implicitly
+fast.c(81):W0520223:Function "isWallonSide" declared implicitly
+fast.c(131):W0520223:Function "isWallonSide" declared implicitly
+fast.c(142):W0520223:Function "isWallonSide" declared implicitly
+fast.c(154):W0520223:Function "isWallonSide" declared implicitly
+fast.c(166):W0520223:Function "isWallonSide" declared implicitly
+fast.c(171):W0520223:Function "isWallonSide" declared implicitly
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\rlink.exe -subcommand=DefaultBuild\HM_StarterKit.clnk
-W0561016:The evaluation version of CC-RX V3 is valid for the remaining 50 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
-W0561016:The evaluation version of CC-RX V3 is valid for the remaining 50 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
+W0561016:The evaluation version of CC-RX V3 is valid for the remaining 49 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
+W0561016:The evaluation version of CC-RX V3 is valid for the remaining 49 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
 Renesas Optimizing Linker Completed
 ------ ビルド終了(エラー:0個, 警告:31個)(HM_StarterKit, DefaultBuild) ------
 
@@ -75,8 +75,8 @@ DefaultBuild\HM_StarterKit.clnk :
 
 
 --- SHA1 hash value of output files ---
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: 6a6b4f38ad244eb62ab680ee2c0ff82439399f0e
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: 1436d2dfb4e986929abd9a83ffb10c2084b66030
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: e993ce76bcd5155ba50c7a1926122e0b9c3ccac5
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: 2818552897d0538bdabcd6db93e94970236e47a4
 
 
 --- システム情報 ---
@@ -104,13 +104,13 @@ C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBui
  C:\Program Files (x86)\Renesas Electronics\CS+\CC
 *メモリ使用量
  *プライベート・ワーキング・セット
-  306 MB
+  321 MB
  *GDIオブジェクト数
-  2180
+  2188
  *USERオブジェクト数
-  1172
+  1175
  *開いているファイル
-  18 editors, 18 files, 324 KB
+  19 editors, 19 files, 331 KB
 
 --- ビルド・ツール・プラグイン情報 ---
 RH850ビルド・ツールCC-RH用プラグイン

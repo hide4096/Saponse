@@ -32,8 +32,8 @@ void search_lefthand(void)
 	{
 		if(sen_l.is_wall == false)			
 		{
-			straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
-			turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
+			straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
+			slalom(90,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED,LEFT);				
 			straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);	
 		}
 		else if( (sen_fl.is_wall == false) && (sen_fr.is_wall == false) )	
@@ -42,8 +42,8 @@ void search_lefthand(void)
 		}
 		else if(sen_r.is_wall == false)			
 		{
-			straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
-			turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);			
+			straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);
+			slalom(90,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED,RIGHT);
 			straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);	
 		}
 		else						
@@ -398,7 +398,7 @@ short isWallonSide(short dire)
 	return rt;
 }
 
-//‘«—§–@
+//ï¿½ï¿½ï¿½ï¿½ï¿½@
 void search_adachi(int gx, int gy)
 {
 
@@ -482,8 +482,8 @@ void search_adachi(int gx, int gy)
 		switch(get_nextdir(gx,gy,MASK_SEARCH,&glob_nextdir))		
 		{
 			case front:
-				len_mouse-=SLIP_DIST;
-				if(isWallonSide(left) && isWallonSide(right) && sen_fr.is_control && sen_fl.is_control){
+				len_mouse-=SLIP_DIST_SEARCH;
+				if(isWallonSide(left) && isWallonSide(right) && sen_r.is_control && sen_l.is_control){
 					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
@@ -545,7 +545,7 @@ void search_adachi(int gx, int gy)
 				}else{
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 				}
-				do_back-=2;
+				do_back--;
 				break;
 		}
 

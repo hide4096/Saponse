@@ -336,6 +336,8 @@ void init_all(void){
 	//E2フラッシュの初期化
 	hw_dflash_init();
 
+	//直進数保存用の配列の初期化
+	for(int i=0;i<MAX_STEP;i++) stlen[i] = 0;
 	
 }
 

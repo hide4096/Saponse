@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  07-Mar-2022 13:42:53
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  08-Mar-2022 17:01:12
 
 ;*** CPU TYPE ***
 
@@ -31,8 +31,11 @@
 
 		.glb	_mypos
 		.glb	_do_back
+		.glb	_len_mouse
+		.glb	_stlen
 		.glb	_fast_run
 		.glb	_get_nextdir
+		.glb	_LED
 		.glb	_isWallonSide
 		.glb	_back
 		.glb	_straight_NC
@@ -40,501 +43,694 @@
 		.glb	_straight
 		.SECTION	P,CODE
 _fast_run:
-		.STACK	_fast_run=20
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",13
-		ADD #0FFFFFFF0H, R0
-		MOV.L R1, 0CH[R0]
-		MOV.L R2, 08H[R0]
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",20
-		MOV.L 0CH[R0], R1
+		.STACK	_fast_run=24
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",15
+		ADD #0FFFFFFECH, R0
+		MOV.L R1, 10H[R0]
+		MOV.L R2, 0CH[R0]
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",18
+		MOV.L #00000000H, 08H[R0]
+		BRA L23
+L11:	; bb
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",22
+		MOV.L 0CH[R0], R2
+		MOV.L 10H[R0], R1
 		ADD #04H, R0, R4
 		MOV.L #00000003H, R3
 		BSR _get_nextdir
-		CMP #03H, R1
-		BEQ L24
-L11:	; entry
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		CMP #01H, R1
-		BEQ L18
-L12:	; entry
-		CMP #02H, R1
-		BEQ L30
-L13:	; entry
 		CMP #00H, R1
-		BNE L32
-L14:	; switch_clause_bb
-		MOV.L #00000002H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",23
-		BSR _isWallonSide
-		CMP #00H, R1
-		BEQ L17
-L15:	; if_then_bb
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #0C2200000H, R1
+		MOV.L 08H[R0], R1
+		BNE L13
+L12:	; switch_clause_bb
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",24
-		BSR _back
-L16:	; if_then_bb.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
-		MOV.L #42820000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",25
-		MOV.L R3, R4
-		BSR _straight_NC
-		BRA L32
-L17:	; if_else_bb
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
-		MOV.L #42340000H, R1
+		MOV.L #_stlen, R14
+		MOV.L [R1,R14], R15
+		ADD #01H, R15
+		MOV.L R15, [R1,R14]
+		BRA L14
+L13:	; switch_clause_bb11
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",27
-		MOV.L R3, R4
-		BSR _straight_NC
-		BRA L32
-L18:	; switch_clause_bb9
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #00000000H, R4
-		MOV.L #41490FDBH, R3
-		MOV.L #4116CBE4H, R2
-		MOV.L #0000005AH, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",32
-		BSR _turn
-L19:	; switch_clause_bb9.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #00000003H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",33
-		BSR _isWallonSide
-		CMP #00H, R1
-		BEQ L23
-L20:	; if_then_bb14
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #0C2200000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",34
-		BSR _back
-L21:	; if_then_bb14.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
-		MOV.L #42820000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",35
-		MOV.L R3, R4
-		BSR _straight_NC
-L22:	; if_then_bb14.split1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",36
-		MOV.L #_do_back, R14
-		MOV.L #00000003H, [R14]
-		BRA L32
-L23:	; if_else_bb15
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
-		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",38
-		MOV.L R3, R4
-		BSR _straight_NC
-		BRA L32
-L24:	; switch_clause_bb17
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #00000001H, R4
-		MOV.L #41490FDBH, R3
-		MOV.L #4116CBE4H, R2
-		MOV.L #0000005AH, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",43
-		BSR _turn
-L25:	; switch_clause_bb17.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #00000001H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",44
-		BSR _isWallonSide
-		CMP #00H, R1
-		BEQ L29
-L26:	; if_then_bb22
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #0C2200000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",45
-		BSR _back
-L27:	; if_then_bb22.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
-		MOV.L #42820000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",46
-		MOV.L R3, R4
-		BSR _straight_NC
-L28:	; if_then_bb22.split2
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",47
-		MOV.L #_do_back, R14
-		MOV.L #00000003H, [R14]
-		BRA L32
-L29:	; if_else_bb23
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
-		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",49
-		MOV.L R3, R4
-		BSR _straight_NC
-		BRA L32
-L30:	; switch_clause_bb25
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #00000000H, R4
-		MOV.L #41490FDBH, R3
-		MOV.L #4116CBE4H, R2
-		MOV.L #000000B4H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",54
-		BSR _turn
-L31:	; switch_clause_bb25.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
-		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",55
-		MOV.L R3, R4
-		BSR _straight_NC
-L32:	; switch_break_bb
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",59
+		ADD #01H, R1
+		MOV.L R1, 08H[R0]
+L14:	; switch_break_bb
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",30
 		MOV.L #_mypos, R14
 		MOV.L 04H[R0], 04H[R14]
-L33:	; switch_break_bb.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",63
+L15:	; switch_break_bb.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",31
 		MOV.L #_mypos, R1
 		MOV.L 04H[R1], R1
 		CMP #03H, R1
-		BEQ L40
-L34:	; switch_break_bb.split
+		BEQ L22
+L16:	; switch_break_bb.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		CMP #01H, R1
-		BEQ L38
-L35:	; switch_break_bb.split
+		BEQ L20
+L17:	; switch_break_bb.split
 		CMP #02H, R1
-		BEQ L39
-L36:	; switch_break_bb.split
+		BEQ L21
+L18:	; switch_break_bb.split
 		CMP #00H, R1
-		BNE L83
-L37:	; switch_clause_bb28
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",66
+		BNE L23
+L19:	; switch_clause_bb16
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",33
 		MOV.L #_mypos, R1
 		MOV.W 02H[R1], R2
 		ADD #01H, R2
 		MOV.W R2, 02H[R1]
-		BRA L83
-L38:	; switch_clause_bb31
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",70
+		BRA L23
+L20:	; switch_clause_bb19
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",37
 		MOV.L #_mypos, R14
 		MOV.W [R14], R15
 		ADD #01H, R15
 		MOV.W R15, [R14]
-		BRA L83
-L39:	; switch_clause_bb34
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",74
+		BRA L23
+L21:	; switch_clause_bb22
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",41
 		MOV.L #_mypos, R1
 		MOV.W 02H[R1], R2
 		SUB #01H, R2
 		MOV.W R2, 02H[R1]
-		BRA L83
-L40:	; switch_clause_bb37
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",78
+		BRA L23
+L22:	; switch_clause_bb25
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",45
 		MOV.L #_mypos, R14
 		MOV.W [R14], R15
 		SUB #01H, R15
 		MOV.W R15, [R14]
-		BRA L83
-L41:	; bb
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",88
-		MOV.L 08H[R0], R2
-		MOV.L 0CH[R0], R1
+L23:	; bb29
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",21
+		MOV.L #_mypos, R14
+		MOV.W [R14], R14
+		CMP 10H[R0].L, R14
+		BNE L25
+L24:	; bb35
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #_mypos, R1
+		MOV.W 02H[R1], R1
+		CMP 0CH[R0].L, R1
+		BEQ L26
+L25:	; bb41
+		MOV.L #00000001H, [R0]
+		BRA L27
+L26:	; bb42
+		MOV.L #00000000H, [R0]
+L27:	; bb43
+		MOV.L [R0], R1
+		CMP #00H, R1
+		BNE L11
+L28:	; bb47
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",50
+		MOV.L #_mypos, R2
+		MOV.W R1, 02H[R2]
+		MOV.W R1, [R2]
+		MOV.L R1, 08H[R0]
+L29:	; bb47.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",51
+		MOV.L #_mypos, R1
+		MOV.L #00000000H, 04H[R1]
+L30:	; bb47.split1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #00000006H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",52
+		BSR _LED
+L31:	; bb47.split2
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",55
+		MOV.L 0CH[R0], R2
+		MOV.L 10H[R0], R1
 		ADD #04H, R0, R4
 		MOV.L #00000003H, R3
 		BSR _get_nextdir
 		CMP #03H, R1
-		BEQ L58
-L42:	; bb
+		BEQ L47
+L32:	; bb47.split2
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		CMP #01H, R1
+		BEQ L40
+L33:	; bb47.split2
+		CMP #02H, R1
+		BEQ L54
+L34:	; bb47.split2
+		CMP #00H, R1
+		BNE L57
+L35:	; switch_clause_bb54
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",58
+		MOV.L 08H[R0], R1
+		SHLL #02H, R1
+		MOV.L #_stlen, R14
+		ADD R1, R14
+		MOV.W [R14], R1
+		BSR _LED
+L36:	; switch_clause_bb54.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #00000002H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",59
+		BSR _isWallonSide
+		CMP #00H, R1
+		BEQ L39
+L37:	; if_then_bb
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #0C2200000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",60
+		BSR _back
+L38:	; if_then_bb.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
+		MOV.L #42820000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",61
+		MOV.L R3, R4
+		BSR _straight_NC
+		BRA L57
+L39:	; if_else_bb
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
+		MOV.L #42340000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",63
+		MOV.L R3, R4
+		BSR _straight_NC
+		BRA L57
+L40:	; switch_clause_bb63
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #00000000H, R4
+		MOV.L #41FB53D2H, R2
+		MOV.L #0000005AH, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",68
+		MOV.L R2, R3
+		BSR _turn
+L41:	; switch_clause_bb63.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #00000003H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",69
+		BSR _isWallonSide
+		CMP #00H, R1
+		BEQ L45
+L42:	; if_then_bb68
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #0C2200000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",70
+		BSR _back
+L43:	; if_then_bb68.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
+		MOV.L #42820000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",71
+		MOV.L R3, R4
+		BSR _straight_NC
+L44:	; if_then_bb68.split3
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",72
+		MOV.L #_do_back, R14
+		MOV.L #00000004H, [R14]
+		BRA L46
+L45:	; if_else_bb69
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
+		MOV.L #42340000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",74
+		MOV.L R3, R4
+		BSR _straight_NC
+L46:	; if_break_bb70
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",76
+		MOV.L 08H[R0], R1
+		ADD #01H, R1
+		MOV.L R1, 08H[R0]
+		BRA L57
+L47:	; switch_clause_bb73
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #00000001H, R4
+		MOV.L #41FB53D2H, R2
+		MOV.L #0000005AH, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",80
+		MOV.L R2, R3
+		BSR _turn
+L48:	; switch_clause_bb73.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #00000001H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",81
+		BSR _isWallonSide
+		CMP #00H, R1
 		BEQ L52
-L43:	; bb
+L49:	; if_then_bb78
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #0C2200000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",82
+		BSR _back
+L50:	; if_then_bb78.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
+		MOV.L #42820000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",83
+		MOV.L R3, R4
+		BSR _straight_NC
+L51:	; if_then_bb78.split4
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",84
+		MOV.L #_do_back, R14
+		MOV.L #00000004H, [R14]
+		BRA L53
+L52:	; if_else_bb79
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
+		MOV.L #42340000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",86
+		MOV.L R3, R4
+		BSR _straight_NC
+L53:	; if_break_bb80
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",88
+		MOV.L 08H[R0], R1
+		ADD #01H, R1
+		MOV.L R1, 08H[R0]
+		BRA L57
+L54:	; switch_clause_bb83
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #00000000H, R4
+		MOV.L #41FB53D2H, R2
+		MOV.L #000000B4H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",92
+		MOV.L R2, R3
+		BSR _turn
+L55:	; switch_clause_bb83.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
+		MOV.L #42340000H, R1
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",93
+		MOV.L R3, R4
+		BSR _straight_NC
+L56:	; switch_clause_bb83.split5
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",94
+		MOV.L 08H[R0], R1
+		ADD #01H, R1
+		MOV.L R1, 08H[R0]
+L57:	; switch_break_bb86
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",98
+		MOV.L #_mypos, R14
+		MOV.L 04H[R0], 04H[R14]
+L58:	; switch_break_bb86.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",102
+		MOV.L #_mypos, R1
+		MOV.L 04H[R1], R1
+		CMP #03H, R1
+		BEQ L65
+L59:	; switch_break_bb86.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		CMP #01H, R1
+		BEQ L63
+L60:	; switch_break_bb86.split
 		CMP #02H, R1
 		BEQ L64
-L44:	; bb
+L61:	; switch_break_bb86.split
 		CMP #00H, R1
-		BNE L74
-L45:	; switch_clause_bb44
+		BNE L121
+L62:	; switch_clause_bb89
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",105
+		MOV.L #_mypos, R1
+		MOV.W 02H[R1], R2
+		ADD #01H, R2
+		MOV.W R2, 02H[R1]
+		BRA L121
+L63:	; switch_clause_bb92
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",109
+		MOV.L #_mypos, R14
+		MOV.W [R14], R15
+		ADD #01H, R15
+		MOV.W R15, [R14]
+		BRA L121
+L64:	; switch_clause_bb95
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",113
+		MOV.L #_mypos, R1
+		MOV.W 02H[R1], R2
+		SUB #01H, R2
+		MOV.W R2, 02H[R1]
+		BRA L121
+L65:	; switch_clause_bb98
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",117
+		MOV.L #_mypos, R14
+		MOV.W [R14], R15
+		SUB #01H, R15
+		MOV.W R15, [R14]
+		BRA L121
+L66:	; bb102
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",126
+		MOV.L 0CH[R0], R2
+		MOV.L 10H[R0], R1
+		ADD #04H, R0, R4
+		MOV.L #00000003H, R3
+		BSR _get_nextdir
+		CMP #03H, R1
+		BEQ L90
+L67:	; bb102
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		CMP #01H, R1
+		BEQ L79
+L68:	; bb102
+		CMP #02H, R1
+		BEQ L101
+L69:	; bb102
+		CMP #00H, R1
+		BNE L112
+L70:	; switch_clause_bb106
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",129
+		MOV.L 08H[R0], R1
+		SHLL #02H, R1
+		MOV.L #_stlen, R14
+		ADD R1, R14
+		MOV.W [R14], R1
+		BSR _LED
+L71:	; switch_clause_bb106.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",130
+		MOV.L #_len_mouse, R14
+		MOV.L [R14], R15
+		FADD #0C0000000H, R15
+		MOV.L R15, [R14]
+L72:	; switch_clause_bb106.split6
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000003H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",91
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",131
 		BSR _isWallonSide
 		CMP #00H, R1
-		BEQ L48
-L46:	; bb48
+		BEQ L75
+L73:	; bb116
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000001H, R1
 		BSR _isWallonSide
 		CMP #00H, R1
-		BEQ L48
-L47:	; bb52
+		BEQ L75
+L74:	; bb120
 		MOV.L #00000001H, [R0]
-		BRA L49
-L48:	; bb53
+		BRA L76
+L75:	; bb121
 		MOV.L #00000000H, [R0]
-L49:	; bb54
+L76:	; bb122
 		MOV.L [R0], R1
 		CMP #00H, R1
-		BEQ L51
-L50:	; if_then_bb59
+		BEQ L78
+L77:	; if_then_bb127
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42B40000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",92
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",132
 		MOV.L R3, R4
 		BSR _straight
-		BRA L74
-L51:	; if_else_bb60
+		BRA L112
+L78:	; if_else_bb128
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42B40000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",94
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",134
 		MOV.L R3, R4
 		BSR _straight_NC
-		BRA L74
-L52:	; switch_clause_bb62
+		BRA L112
+L79:	; switch_clause_bb130
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",139
+		MOV.L 08H[R0], R1
+		ADD #01H, R1
+		MOV.L R1, 08H[R0]
+L80:	; switch_clause_bb130.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R4
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",99
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",140
 		BSR _straight_NC
-L53:	; switch_clause_bb62.split
+L81:	; switch_clause_bb130.split7
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R4
-		MOV.L #41490FDBH, R3
-		MOV.L #4116CBE4H, R2
+		MOV.L #41FB53D2H, R2
 		MOV.L #0000005AH, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",100
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",141
+		MOV.L R2, R3
 		BSR _turn
-L54:	; switch_clause_bb62.split3
+L82:	; switch_clause_bb130.split8
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000003H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",101
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",142
 		BSR _isWallonSide
 		CMP #00H, R1
-		BEQ L57
-L55:	; if_then_bb67
+		BEQ L85
+L83:	; bb136
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #_stlen, R14
+		MOV.L 08H[R0], R1
+		MOV.L [R1,R14], R14
+		CMP #05H, R14
+		BLT L85
+L84:	; bb142
+		MOV.L #00000001H, [R0]
+		BRA L86
+L85:	; bb143
+		MOV.L #00000000H, [R0]
+L86:	; bb144
+		MOV.L [R0], R1
+		CMP #00H, R1
+		BEQ L89
+L87:	; if_then_bb149
 		MOV.L #0C2200000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",102
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",143
 		BSR _back
-L56:	; if_then_bb67.split
+L88:	; if_then_bb149.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42820000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",103
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",144
 		MOV.L R3, R4
 		BSR _straight_NC
-		BRA L74
-L57:	; if_else_bb68
+		BRA L112
+L89:	; if_else_bb150
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",105
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",146
 		MOV.L R3, R4
 		BSR _straight_NC
-		BRA L74
-L58:	; switch_clause_bb70
+		BRA L112
+L90:	; switch_clause_bb152
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",151
+		MOV.L 08H[R0], R1
+		ADD #01H, R1
+		MOV.L R1, 08H[R0]
+L91:	; switch_clause_bb152.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R4
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",110
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",152
 		BSR _straight_NC
-L59:	; switch_clause_bb70.split
+L92:	; switch_clause_bb152.split9
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000001H, R4
-		MOV.L #41490FDBH, R3
-		MOV.L #4116CBE4H, R2
+		MOV.L #41FB53D2H, R2
 		MOV.L #0000005AH, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",111
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",153
+		MOV.L R2, R3
 		BSR _turn
-L60:	; switch_clause_bb70.split4
+L93:	; switch_clause_bb152.split10
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000001H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",112
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",154
 		BSR _isWallonSide
 		CMP #00H, R1
-		BEQ L63
-L61:	; if_then_bb75
+		BEQ L96
+L94:	; bb158
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
+		MOV.L #_stlen, R14
+		MOV.L 08H[R0], R1
+		MOV.L [R1,R14], R14
+		CMP #05H, R14
+		BLT L96
+L95:	; bb164
+		MOV.L #00000001H, [R0]
+		BRA L97
+L96:	; bb165
+		MOV.L #00000000H, [R0]
+L97:	; bb166
+		MOV.L [R0], R1
+		CMP #00H, R1
+		BEQ L100
+L98:	; if_then_bb171
 		MOV.L #0C2200000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",113
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",155
 		BSR _back
-L62:	; if_then_bb75.split
+L99:	; if_then_bb171.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42820000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",114
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",156
 		MOV.L R3, R4
 		BSR _straight_NC
-		BRA L74
-L63:	; if_else_bb76
+		BRA L112
+L100:	; if_else_bb172
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",116
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",158
 		MOV.L R3, R4
 		BSR _straight_NC
-		BRA L74
-L64:	; switch_clause_bb78
+		BRA L112
+L101:	; switch_clause_bb174
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R4
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",121
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",163
 		BSR _straight
-L65:	; switch_clause_bb78.split
+L102:	; switch_clause_bb174.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000001H, R4
-		MOV.L #41490FDBH, R3
-		MOV.L #4116CBE4H, R2
+		MOV.L #41FB53D2H, R2
 		MOV.L #0000005AH, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",123
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",165
+		MOV.L R2, R3
 		BSR _turn
-L66:	; switch_clause_bb78.split5
+L103:	; switch_clause_bb174.split11
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000001H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",124
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",166
 		BSR _isWallonSide
 		CMP #00H, R1
-		BEQ L69
-L67:	; if_then_bb83
+		BEQ L106
+L104:	; if_then_bb179
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #0C2200000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",125
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",167
 		BSR _back
-L68:	; if_then_bb83.split
+L105:	; if_then_bb179.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R4
 		MOV.L #3F800000H, R2
 		MOV.L #41C80000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",126
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",168
 		MOV.L R2, R3
 		BSR _straight
-L69:	; if_break_bb84
+L106:	; if_break_bb180
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000001H, R4
-		MOV.L #41490FDBH, R3
-		MOV.L #4116CBE4H, R2
+		MOV.L #41FB53D2H, R2
 		MOV.L #0000005AH, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",128
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",170
+		MOV.L R2, R3
 		BSR _turn
-L70:	; if_break_bb84.split
+L107:	; if_break_bb180.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #00000000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",129
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",171
 		BSR _isWallonSide
 		CMP #00H, R1
-		BEQ L73
-L71:	; if_then_bb89
+		BEQ L110
+L108:	; if_then_bb185
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #0C2200000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",130
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",172
 		BSR _back
-L72:	; if_then_bb89.split
+L109:	; if_then_bb185.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42820000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",131
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",173
 		MOV.L R3, R4
 		BSR _straight_NC
-		BRA L74
-L73:	; if_else_bb90
+		BRA L111
+L110:	; if_else_bb186
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #3EE66666H, R3
 		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",133
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",175
 		MOV.L R3, R4
 		BSR _straight_NC
-L74:	; switch_break_bb92
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",138
+L111:	; if_break_bb187
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",177
+		MOV.L 08H[R0], R1
+		ADD #01H, R1
+		MOV.L R1, 08H[R0]
+L112:	; switch_break_bb190
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",181
 		MOV.L #_mypos, R14
 		MOV.L 04H[R0], 04H[R14]
-L75:	; switch_break_bb92.split
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",141
+L113:	; switch_break_bb190.split
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",184
 		MOV.L #_mypos, R1
 		MOV.L 04H[R1], R1
 		CMP #03H, R1
-		BEQ L82
-L76:	; switch_break_bb92.split
+		BEQ L120
+L114:	; switch_break_bb190.split
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		CMP #01H, R1
-		BEQ L80
-L77:	; switch_break_bb92.split
+		BEQ L118
+L115:	; switch_break_bb190.split
 		CMP #02H, R1
-		BEQ L81
-L78:	; switch_break_bb92.split
+		BEQ L119
+L116:	; switch_break_bb190.split
 		CMP #00H, R1
-		BNE L83
-L79:	; switch_clause_bb95
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",144
+		BNE L121
+L117:	; switch_clause_bb193
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",187
 		MOV.L #_mypos, R1
 		MOV.W 02H[R1], R2
 		ADD #01H, R2
 		MOV.W R2, 02H[R1]
-		BRA L83
-L80:	; switch_clause_bb98
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",148
+		BRA L121
+L118:	; switch_clause_bb196
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",191
 		MOV.L #_mypos, R14
 		MOV.W [R14], R15
 		ADD #01H, R15
 		MOV.W R15, [R14]
-		BRA L83
-L81:	; switch_clause_bb101
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",152
+		BRA L121
+L119:	; switch_clause_bb199
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",195
 		MOV.L #_mypos, R1
 		MOV.W 02H[R1], R2
 		SUB #01H, R2
 		MOV.W R2, 02H[R1]
-		BRA L83
-L82:	; switch_clause_bb104
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",156
+		BRA L121
+L120:	; switch_clause_bb202
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",199
 		MOV.L #_mypos, R14
 		MOV.W [R14], R15
 		SUB #01H, R15
 		MOV.W R15, [R14]
-L83:	; bb108
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",85
+L121:	; bb206
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",123
 		MOV.L #_mypos, R14
 		MOV.W [R14], R14
-		CMP 0CH[R0].L, R14
-		BNE L85
-L84:	; bb114
+		CMP 10H[R0].L, R14
+		BNE L123
+L122:	; bb212
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",0
 		MOV.L #_mypos, R1
 		MOV.W 02H[R1], R1
-		CMP 08H[R0].L, R1
-		BEQ L86
-L85:	; bb120
+		CMP 0CH[R0].L, R1
+		BEQ L124
+L123:	; bb218
 		MOV.L #00000001H, [R0]
-		BRA L87
-L86:	; bb121
+		BRA L125
+L124:	; bb219
 		MOV.L #00000000H, [R0]
-L87:	; bb122
+L125:	; bb220
 		MOV.L [R0], R1
 		CMP #00H, R1
-		BNE L41
-L88:	; bb127
+		BNE L66
+L126:	; bb225
 		MOV.L #00000000H, R4
-		MOV.L #3F800000H, R3
-		MOV.L #40200000H, R2
+		MOV.L #3F266666H, R3
+		MOV.L #40000000H, R2
 		MOV.L #42340000H, R1
-		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",161
+		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\fast.c",204
 		BSR _straight
-		RTSD #10H
+		RTSD #14H
 		.END

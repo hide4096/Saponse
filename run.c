@@ -43,7 +43,7 @@ void running(float len, float acc, float max_sp, float end_sp,t_bool mode,unsign
 	//モータ出力をON
 	MOT_POWER_ON;
 	start_timer = timer;
-	LED(0);
+	
 
 	if(end_speed == 0.0){	//最終的に停止する場合
 		//減速処理を始めるべき位置まで加速、定速区間を続行
@@ -52,11 +52,11 @@ void running(float len, float acc, float max_sp, float end_sp,t_bool mode,unsign
 		accel = -acc;					//減速するために加速度を負の値にする	
 		while(len_mouse < (len_target + 5)){		//停止したい距離の少し手前まで継続
 			if((sen_fr.is_wall==false) && (sen_fl.is_wall==false) && (len_mouse > len_target)){//前壁なし
-				LED(8);
+				
         		break;
     		}
     		if( (sen_fr.value > RIGHT_90) && (sen_fl.value > LEFT_90) && ( len_mouse > (len_target - 5)) ) {//目標の位置の5mm手前
-				LED(2);
+				
         		break;
     		}
 			//一定速度まで減速したら最低駆動トルクで走行
@@ -65,7 +65,7 @@ void running(float len, float acc, float max_sp, float end_sp,t_bool mode,unsign
 				tar_speed = MIN_SPEED;
 			}
 			if((timer - start_timer) >= limit_timer && limit_timer > 0){
-				LED(6);
+				
 				break;
 			}
 		}
@@ -75,7 +75,7 @@ void running(float len, float acc, float max_sp, float end_sp,t_bool mode,unsign
 		while(speed >= 0.0);
 			
 	}else{
-		LED(14);
+
 		//減速処理を始めるべき位置まで加速、定速区間を続行
 		while( ((len_target - 25) - len_mouse) >  1000.0*((float)(tar_speed * tar_speed) - (float)(end_speed * end_speed))/(float)(2.0*accel));
 		
@@ -109,7 +109,6 @@ void straight_NC(float len, float acc, float max_sp, float end_sp){
 }
 extern volatile unsigned int timer;
 void back(float len){
-	LED(8);
 	unsigned int start_timer;//タイヤがロックした時の対策
     I_tar_ang_vel = 0;
     I_ang_vel = 0;
@@ -147,7 +146,7 @@ void turn(int deg, float ang_accel, float max_ang_velocity, short dir){
 	I_speed = 0;
 	tar_degree = 0;
 
-	float	local_degree = 0;
+	float local_degree = 0;
 	accel = 0;
 	tar_speed = 0;
 	tar_ang_vel = 0;
@@ -215,5 +214,40 @@ void turn(int deg, float ang_accel, float max_ang_velocity, short dir){
 	ang_acc = 0;
 	//現在距離を0にリセット
 	len_mouse = 0;
+	wait_ms(WAIT_TIME);
+}
+
+void slalom(int deg,float acc, float max_sp, float end_sp,short dir){
+	wait_ms(WAIT_TIME);
+
+	I_tar_ang_vel = 0;
+	I_ang_vel = 0;
+	I_tar_speed = 0;
+	I_speed = 0;
+
+	tar_speed = max_sp;
+	max_speed = max_sp;
+	accel = acc;
+	max_ang_vel = 
+	TURN_DIR = dir;
+
+	float vel = 10.0;
+
+	if(TURN_DIR == LEFT){
+		tar_ang_vel = vel;
+	}else if(TURN_DIR == RIGHT){
+		tar_ang_vel = -vel;
+	}
+	max_ang_vel = tar_ang_vel;
+
+	run_mode = TURN_MODE;
+	float local_degree = degree;
+
+	MOT_POWER_ON;
+	if(dir == LEFT)			while((degree - local_degree) <= deg);
+	else if(dir == RIGHT)	while((local_degree - degree) <= deg);
+	tar_speed = end_sp;
+	tar_ang_vel = 0;
+	while(ang_vel >= 0.05 || ang_vel <= -0.05 );
 	wait_ms(WAIT_TIME);
 }

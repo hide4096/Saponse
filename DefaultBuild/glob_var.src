@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  07-Mar-2022 13:42:53
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  08-Mar-2022 17:01:12
 
 ;*** CPU TYPE ***
 
@@ -82,6 +82,7 @@
 		.glb	_log
 		.glb	_log_timer
 		.glb	_log_flag
+		.glb	_stlen
 		.glb	_TURN_DIR
 		.glb	_Duty_r
 		.glb	_Duty_l
@@ -193,6 +194,8 @@ _log_timer:
 		.blkl	1
 _log_flag:
 		.blkl	1
+_stlen:
+		.blkl	512
 _Duty_r:
 		.blkl	1
 _Duty_l:
