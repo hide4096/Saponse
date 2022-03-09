@@ -231,7 +231,7 @@ void slalom(int deg,float acc, float max_sp, float end_sp,short dir){
 	max_ang_vel = 
 	TURN_DIR = dir;
 
-	float vel = 10.0;
+	float vel = 3.0;
 
 	if(TURN_DIR == LEFT){
 		tar_ang_vel = vel;

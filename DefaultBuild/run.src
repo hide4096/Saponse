@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  09-Mar-2022 15:49:46
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  09-Mar-2022 16:21:31
 
 ;*** CPU TYPE ***
 
@@ -854,7 +854,7 @@ L152:	; entry.split7
 		MOV.L R14, [R15]
 L153:	; entry.split8
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",234
-		MOV.L #41200000H, 08H[R0]
+		MOV.L #40400000H, 08H[R0]
 L154:	; entry.split9
 		.LINE  "C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\run.c",236
 		MOV.L #_TURN_DIR, R14
