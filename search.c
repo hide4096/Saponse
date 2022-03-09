@@ -378,34 +378,53 @@ int get_nextdir(int x, int y, int mask, t_direction *dir)
 	
 }
 
-short isWallonSide(short dire)
+short isWallAround(short dire,short add)
 {
+	short ax=0,ay=0;
+	switch(mypos.dir){
+		case north:
+			ay+=add;
+			break;
+		case east:
+			ax+=add;
+			break;
+		case south:
+			ay-=add;
+			break;
+		case west:
+			ax-=add;
+			break;
+	}
+
 	short rt = 0;
 	switch((int)((4+mypos.dir + dire) % 4)){
 		case north:
-			rt = wall[mypos.x][mypos.y].north & MASK_SECOND;
+			rt = wall[mypos.x + ax][mypos.y + ay].north & MASK_SECOND;
 			break;
 		case east:
-			rt = wall[mypos.x][mypos.y].east & MASK_SECOND;
+			rt = wall[mypos.x + ax][mypos.y + ay].east & MASK_SECOND;
 			break;
 		case south:
-			rt = wall[mypos.x][mypos.y].south & MASK_SECOND;
+			rt = wall[mypos.x + ax][mypos.y + ay].south & MASK_SECOND;
 			break;
 		case west:
-			rt = wall[mypos.x][mypos.y].west & MASK_SECOND;
+			rt = wall[mypos.x + ax][mypos.y + ay].west & MASK_SECOND;
 			break;		 
 	}
 	return rt;
 }
 
-//�����@
+short isWallonSide(short dire){
+	return isWallAround(dire,0);
+}
+
 void search_adachi(int gx, int gy)
 {
 
 	t_direction glob_nextdir;					
 
 	accel=SEARCH_ACCEL;
-	do_back = INT_BACK;
+	do_back = -1;
 
 	switch(get_nextdir(gx,gy,MASK_SEARCH,&glob_nextdir))		
 	{
@@ -483,7 +502,7 @@ void search_adachi(int gx, int gy)
 		{
 			case front:
 				len_mouse-=SLIP_DIST_SEARCH;
-				if(isWallonSide(left) && isWallonSide(right) && sen_r.is_control && sen_l.is_control){
+				if(isWallonSide(left) && isWallonSide(right) && isWallAround(left,1) && isWallAround(right,1)){
 					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		

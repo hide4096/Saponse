@@ -22,7 +22,7 @@ GLOBAL unsigned char		map[MAZESIZE_X][MAZESIZE_Y];		//歩数マップ
 
 //走行系のグローバル変数
 GLOBAL int run_mode;							//真っ直ぐか回転かの走行モード（制御系の切り替えに使用）
-GLOBAL int do_back;
+GLOBAL short do_back;
 
 //車体速度系のグローバル変数
 GLOBAL float			fast_speed;				//最短走行時の最高速度	[m/s]

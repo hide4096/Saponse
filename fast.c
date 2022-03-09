@@ -56,6 +56,7 @@ void fast_run(int x, int y)
 	{
 		case front:
 			LED(stlen[t]);
+			len_mouse-=SLIP_DIST_FAST;
 			if(isWallonSide(rear)){
 				back(-40);
 				straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);		
@@ -128,7 +129,7 @@ void fast_run(int x, int y)
 			case front:
 				LED(stlen[t]);
 				len_mouse-=SLIP_DIST_FAST;
-				if(isWallonSide(left) && isWallonSide(right)){
+				if(isWallonSide(left) && isWallonSide(right) && isWallAround(left,1) && isWallAround(right,1)){
 					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		

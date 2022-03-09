@@ -116,6 +116,7 @@ void main(void)
 			
 				//センサーの前に手をかざしてスタート
 				if(sen_fr.value + sen_fl.value + sen_r.value + sen_l.value > SEN_DECISION * 4){
+loop:
 					BEEP();
 					map_copy();
 					degree = 0;
@@ -141,6 +142,9 @@ void main(void)
 					map_write();
 					log_flag = 0;
 					BEEP();
+
+					wait_ms(2000);
+					goto loop;
 				}
 				
 				break;
@@ -238,8 +242,55 @@ void main(void)
 				//センサーの前に手をかざしてスタート
 				if(sen_fr.value + sen_fl.value + sen_r.value + sen_l.value > SEN_DECISION * 4){
 					BEEP();
+					degree = 0;
+					timer = 0;
+					log_timer = 0;
+					gyro_get_ref();
+					BEEP();
+					mypos.x = mypos.y = 0;			//座標を初期化
+					mypos.dir = north;			//方角を初期化
+					log_flag = 1;
+					log_timer = 0;
+					search_adachi(GOAL_X,GOAL_Y);		//ゴールまで足立法
+					turn(180,TURN_ACCEL,TURN_SPEED,RIGHT);			//ゴールしたら180度回転する
+					mypos.dir = (mypos.dir+6) % 4;		//方角を更新
+					map_write();
+					BEEP();
+					wait_ms(100);
+					BEEP();//ゴールしたことをアピール
+					wait_ms(100);
+					BEEP();//ゴールしたことをアピール
+					search_adachi(0,0);			//スタート地点まで足立法で帰ってくる
+					turn(180,TURN_ACCEL,TURN_SPEED,RIGHT);			//帰ってきたら180度回転	
+					MOT_POWER_OFF;
+					map_write();
+					log_flag = 0;
+					BEEP();
 
-					wait_ms(500);
+					map_copy();
+					degree = 0;
+					timer = 0;
+					gyro_get_ref();
+					BEEP();
+					mypos.x = mypos.y = 0;			//座標を初期化
+					mypos.dir = north;			//方角を初期化
+					log_flag = 1;
+					log_timer = 0;
+					fast_run(GOAL_X,GOAL_Y);		//ゴールまで足立法
+					turn(180,TURN_ACCEL,TURN_SPEED,RIGHT);			//ゴールしたら180度回転する
+					mypos.dir = (mypos.dir+6) % 4;		//方角を更新
+					map_write();
+					BEEP();
+					wait_ms(100);
+					BEEP();//ゴールしたことをアピール
+					wait_ms(100);
+					BEEP();//ゴールしたことをアピール
+					search_adachi(0,0);			//スタート地点まで足立法で帰ってくる
+					turn(180,TURN_ACCEL,TURN_SPEED,RIGHT);			//帰ってきたら180度回転	
+					MOT_POWER_OFF;
+					map_write();
+					log_flag = 0;
+					BEEP();
 				}
 				
 				break;
