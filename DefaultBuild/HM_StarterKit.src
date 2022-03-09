@@ -1,4 +1,4 @@
-;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  09-Mar-2022 16:21:31
+;RX Family C/C++ Compiler (V3.04.00 [24 Nov 2021])  09-Mar-2022 17:27:26
 
 ;*** CPU TYPE ***
 
@@ -7,16 +7,7 @@
 ;*** COMMAND PARAMETER ***
 
 ;HM_StarterKit.c
-;init.c
-;spi.c
-;interrupt.c
-;glob_var.c
 ;run.c
-;interface.c
-;search.c
-;DataFlash.c
-;fast.c
-;adjust.c
 ;-isa=rxv1
 ;-fpu
 ;-lang=c99
@@ -540,7 +531,7 @@ L104:	; if_then_bb100.split78
 		MOV.W #0000H, [R0]
 		MOV.L #3F000000H, R3
 		MOV.L #40000000H, R2
-		MOV.L #000000B4H, R1
+		MOV.L #0000005AH, R1
 		MOV.L R3, R4
 		BSR _slalom
 		ADD #04H, R0

@@ -219,6 +219,7 @@ void turn(int deg, float ang_accel, float max_ang_velocity, short dir){
 
 void slalom(int deg,float acc, float max_sp, float end_sp,short dir){
 	wait_ms(WAIT_TIME);
+	LED(5);
 
 	I_tar_ang_vel = 0;
 	I_ang_vel = 0;
@@ -228,26 +229,40 @@ void slalom(int deg,float acc, float max_sp, float end_sp,short dir){
 	tar_speed = max_sp;
 	max_speed = max_sp;
 	accel = acc;
-	max_ang_vel = 
 	TURN_DIR = dir;
-
-	float vel = 3.0;
-
-	if(TURN_DIR == LEFT){
-		tar_ang_vel = vel;
-	}else if(TURN_DIR == RIGHT){
-		tar_ang_vel = -vel;
-	}
-	max_ang_vel = tar_ang_vel;
 
 	run_mode = TURN_MODE;
 	float local_degree = degree;
 
 	MOT_POWER_ON;
-	if(dir == LEFT)			while((degree - local_degree) <= deg);
-	else if(dir == RIGHT)	while((local_degree - degree) <= deg);
-	tar_speed = end_sp;
+
+	if(dir == LEFT){
+		tar_ang_vel = 12.0;
+		max_ang_vel = TURN_SPEED;
+		max_degree = deg;
+	}else if(dir == RIGHT){
+		tar_ang_vel = -12.0;
+		max_ang_vel = -TURN_SPEED;
+		max_degree = -deg;
+	}
+
+	if(dir == LEFT){
+		while((degree - local_degree) < max_degree){
+		}
+	}else if(dir == RIGHT){
+		while((degree - local_degree) > max_degree){
+		}
+	}
+
+	ang_acc = 0;
 	tar_ang_vel = 0;
+	tar_degree = max_degree;
+	tar_speed = end_sp;
+
 	while(ang_vel >= 0.05 || ang_vel <= -0.05 );
+	len_mouse = 0;
+	tar_ang_vel = 0;
+	ang_acc = 0;
+	LED(0);
 	wait_ms(WAIT_TIME);
 }

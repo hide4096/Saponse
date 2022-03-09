@@ -1,45 +1,15 @@
 品質記録情報
-2022年3月9日 16:21:36
+2022年3月9日 18:06:01
 
 ------ ビルド開始(HM_StarterKit, DefaultBuild) ------
-C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\ccrx.exe HM_StarterKit.c init.c spi.c interrupt.c glob_var.c run.c interface.c search.c DataFlash.c fast.c adjust.c -isa=rxv1 -fpu -lang=c99 -include=. -output=obj -obj_path=DefaultBuild -asm_path=DefaultBuild -debug -g_line -optimize=0 -nologo
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-HM_StarterKit.c(91):W0520188:Enumerated type mixed with another type
-HM_StarterKit.c(132):W0520188:Enumerated type mixed with another type
-HM_StarterKit.c(173):W0520140:Too many arguments in function call
-HM_StarterKit.c(175):W0520188:Enumerated type mixed with another type
-HM_StarterKit.c(182):W0520140:Too many arguments in function call
-HM_StarterKit.c(256):W0520188:Enumerated type mixed with another type
-HM_StarterKit.c(281):W0520188:Enumerated type mixed with another type
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-spi.c(138):W0520550:Variable "dummy" was set but never used
-spi.c(172):W0520550:Variable "dummy" was set but never used
-spi.c(378):W0520550:Variable "dummy" was set but never used
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\ccrx.exe run.c -isa=rxv1 -fpu -lang=c99 -include=. -output=obj -obj_path=DefaultBuild -asm_path=DefaultBuild -debug -g_line -optimize=0 -nologo
 parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
 run.c(110):W0520147:Declaration is incompatible with "unsigned int timer" (declared at line 63 of "glob_var.h")
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-DataFlash.c(23):W0520550:Variable "isErr" was set but never used
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
-fast.c(60):W0520223:Function "isWallonSide" declared implicitly
-fast.c(70):W0520223:Function "isWallonSide" declared implicitly
-fast.c(82):W0520223:Function "isWallonSide" declared implicitly
-fast.c(132):W0520223:Function "isWallonSide" declared implicitly
-fast.c(132):W0520223:Function "isWallAround" declared implicitly
-fast.c(143):W0520223:Function "isWallonSide" declared implicitly
-fast.c(155):W0520223:Function "isWallonSide" declared implicitly
-fast.c(167):W0520223:Function "isWallonSide" declared implicitly
-fast.c(172):W0520223:Function "isWallonSide" declared implicitly
-parameters.h(4):W0520014:Extra text after expected end of preprocessing directive
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\rlink.exe -subcommand=DefaultBuild\HM_StarterKit.clnk
 W0561016:The evaluation version of CC-RX V3 is valid for the remaining 48 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
 W0561016:The evaluation version of CC-RX V3 is valid for the remaining 48 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
 Renesas Optimizing Linker Completed
------- ビルド終了(エラー:0個, 警告:34個)(HM_StarterKit, DefaultBuild) ------
+------ ビルド終了(エラー:0個, 警告:4個)(HM_StarterKit, DefaultBuild) ------
 
 --- CommandFile 1 ---
 DefaultBuild\HM_StarterKit.clnk :
@@ -78,8 +48,8 @@ DefaultBuild\HM_StarterKit.clnk :
 
 
 --- SHA1 hash value of output files ---
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: b56a422f40f423ab377039537c41b8a1311abf69
-C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: b898cc71bfc6cd26ef3e689a0f2d439eb6488c82
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.abs: 535fcba841dfa7d99bade87c7c4ca2dde8969336
+C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBuild\HM_StarterKit.mot: a91e9236c50cacad4e437fa832f7a5f254350596
 
 
 --- システム情報 ---
@@ -107,11 +77,11 @@ C:\Users\hide\Desktop\HM-StarterKit-master\Sample_software\step7_maze\DefaultBui
  C:\Program Files (x86)\Renesas Electronics\CS+\CC
 *メモリ使用量
  *プライベート・ワーキング・セット
-  317 MB
+  392 MB
  *GDIオブジェクト数
-  2194
+  2235
  *USERオブジェクト数
-  1189
+  1234
  *開いているファイル
   19 editors, 19 files, 332 KB
 

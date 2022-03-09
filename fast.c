@@ -130,38 +130,38 @@ void fast_run(int x, int y)
 				LED(stlen[t]);
 				len_mouse-=SLIP_DIST_FAST;
 				if(isWallonSide(left) && isWallonSide(right) && isWallAround(left,1) && isWallAround(right,1)){
-					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
+					straight(SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);		
 				}else{
-					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
+					straight_NC(SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);		
 				}
 				break;
 			
 			case right:
 				t++;
-				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
+				straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,0);		
 				turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
 				if(isWallonSide(left) && stlen[t] >= H_LIMIT){
 					back(-40);
-					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+					straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}else{
-					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+					straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}
 				break;
 			
 			case left:
 				t++;
-				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
+				straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,0);		
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
 				if(isWallonSide(right) && stlen[t] >= H_LIMIT){
 					back(-40);
-					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+					straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}else{
-					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+					straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}
 				break;
 			
 			case rear:
-				straight(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
+				straight(HALF_SECTION,FAST_ACCEL,FAST_SPEED,0);		
 				
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
 				if(isWallonSide(right)){
@@ -171,9 +171,9 @@ void fast_run(int x, int y)
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);
 				if(isWallonSide(front)){
 					back(-40);
-					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+					straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}else{
-					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
+					straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}
 				t++;
 				break;
