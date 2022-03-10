@@ -27,6 +27,7 @@ void fast_run(int x, int y)
 				t++;
 				break;
 		}
+		if(!(isWallonSide(right) && isWallonSide(left))) iswall[t] = 0;
 		mypos.dir = glob_nextdir;
 		switch(mypos.dir){
 			case north:

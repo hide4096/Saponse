@@ -81,6 +81,7 @@ GLOBAL int			log[12][LOG_CNT];			//ログ用の配列
 GLOBAL long			log_timer;				//ログ取りようのタイマ
 GLOBAL int			log_flag;				//ログ取得のタイミング用
 GLOBAL int          stlen[MAX_STEP];
+GLOBAL int          iswall[MAX_STEP];
 
 //フラグ系のグローバル変数
 GLOBAL char			TURN_DIR;				//ターン方向フラグ
