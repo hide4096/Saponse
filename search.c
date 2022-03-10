@@ -422,6 +422,7 @@ void search_adachi(int gx, int gy)
 {
 
 	t_direction glob_nextdir;					
+	gyro_get_ref();
 
 	accel=SEARCH_ACCEL;
 	do_back = -1;
