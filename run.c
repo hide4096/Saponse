@@ -132,7 +132,7 @@ void back(float len){
             accel=0;
             tar_speed = -1*MIN_SPEED;
         }
-        if((timer - start_timer) > 200 && speed >= 0){//0.2秒経過後にケツ当たってたら終了
+        if((timer - start_timer) > 200 && speed >= 0 || ((timer - start_timer) > 800){ //0.2秒経過後にケツ当たるか0.8秒経過で終了
             break;
         }
     }

@@ -54,7 +54,7 @@
 #define MIN_SPEED	(0.1)				//最低速度	[m/s]
 #define SLIP_DIST_SEARCH    2
 #define SLIP_DIST_FAST      3.5
-#define INT_BACK 4
+#define INT_BACK 3
 
 #define TURN_ACCEL	(PI*10)				//超信地旋回の加速度	[rad/s^2]
 #define	TURN_SPEED	(PI*15)				//超信地旋回の最高速度	[rad/s]
