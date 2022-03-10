@@ -503,7 +503,7 @@ void search_adachi(int gx, int gy)
 		{
 			case front:
 				len_mouse-=SLIP_DIST_SEARCH;
-				if((isWallonSide(left) && sen_l.is_control) || (sen_r.is_control && isWallonSide(right))){
+				if((isWallonSide(left) && sen_l.is_control) && (sen_r.is_control && isWallonSide(right))){
 					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		

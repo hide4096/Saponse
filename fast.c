@@ -8,7 +8,7 @@
 #include "interface.h"
 #include "sci.h"
 
-#define H_LIMIT 5
+#define H_LIMIT 3
 
 extern int get_nextdir(int x, int y, int mask, t_direction *dir);
 
@@ -22,12 +22,12 @@ void fast_run(int x, int y)
 		switch(get_nextdir(x,y,MASK_SECOND,&glob_nextdir)){
 			case front:
 				stlen[t]++;
+				if(!(isWallonSide(right) && isWallonSide(left))) iswall[t] = 0;
 				break;
 			default:
 				t++;
 				break;
 		}
-		if(!(isWallonSide(right) && isWallonSide(left))) iswall[t] = 0;
 		mypos.dir = glob_nextdir;
 		switch(mypos.dir){
 			case north:
@@ -50,13 +50,11 @@ void fast_run(int x, int y)
 	}
 	mypos.x=mypos.y=0,t=0;
 	mypos.dir = north;
-	LED(6);
 
 	//現在の向きから、次に行くべき方向へ向く
 	switch(get_nextdir(x,y,MASK_SECOND,&glob_nextdir))	//次に行く方向を戻り値とする関数を呼ぶ
 	{
 		case front:
-			LED(stlen[t]);
 			len_mouse-=SLIP_DIST_FAST;
 			if(isWallonSide(rear)){
 				back(-40);
@@ -129,9 +127,9 @@ void fast_run(int x, int y)
 		switch(get_nextdir(x,y,MASK_SECOND,&glob_nextdir))	//次に行く方向を戻り値とする関数を呼ぶ
 		{
 			case front:
-				LED(stlen[t]);
+				LED(iswall[t]);
 				len_mouse-=SLIP_DIST_FAST;
-				if(isWallonSide(left) && isWallonSide(right) && isWallAround(left,1) && isWallAround(right,1)){
+				if(iswall[t]){
 					straight(SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);		
 				}else{
 					straight_NC(SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);		
