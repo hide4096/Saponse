@@ -38,7 +38,7 @@
 //Iゲイン　最後に調整する	積分値が合うようにする程度。
 //Dゲイン　二番目に調整する。	P制御によって発生した振動を抑えられる程度に調整
 //車体中心における並進方向速度に関するフィードバックゲイン
-#define SPEED_KP	(25.0)				//Pゲイン
+#define SPEED_KP	(15.0)				//Pゲイン
 #define SPEED_KI	(1.0)				//Iゲイン
 #define SPEED_KD	(3.5)				//Dゲイン　
 //車体中心における回転方向速度に関するフィードバックゲイン
@@ -53,8 +53,9 @@
 #define FAST_ACCEL	(2.0)				//最短走行の加速度	[m/s^2]
 #define MIN_SPEED	(0.1)				//最低速度	[m/s]
 #define SLIP_DIST_SEARCH    2
-#define SLIP_DIST_FAST      3.5
-#define INT_BACK 3
+#define SLIP_DIST_FAST      2
+
+#define INT_BACK 4
 
 #define TURN_ACCEL	(PI*10)				//超信地旋回の加速度	[rad/s^2]
 #define	TURN_SPEED	(PI*15)				//超信地旋回の最高速度	[rad/s]

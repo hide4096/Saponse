@@ -80,6 +80,7 @@ void main(void)
 					degree = 0;
 					timer = 0;
 					log_timer = 0;
+					gyro_get_ref();
 					BEEP();
 					mypos.x = mypos.y = 0;			//座標を初期化
 					mypos.dir = north;			//方角を初期化

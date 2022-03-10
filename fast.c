@@ -59,6 +59,7 @@ void fast_run(int x, int y)
 			len_mouse-=SLIP_DIST_FAST;
 			if(isWallonSide(rear)){
 				back(-40);
+				gyro_get_ref();
 				straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);		
 			}else{
 				straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);		

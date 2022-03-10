@@ -47,7 +47,7 @@ void running(float len, float acc, float max_sp, float end_sp,t_bool mode,unsign
 
 	if(end_speed == 0.0){	//最終的に停止する場合
 		//減速処理を始めるべき位置まで加速、定速区間を続行
-		while( ((len_target / 2) - len_mouse) >  1000.0*((float)(tar_speed * tar_speed) - (float)(end_speed * end_speed))/(float)(2.0*accel));
+		while( ((len_target - 20) - len_mouse) >  1000.0*((float)(tar_speed * tar_speed) - (float)(end_speed * end_speed))/(float)(2.0*accel));
 		//減速処理開始
 		accel = -acc;					//減速するために加速度を負の値にする	
 		while(len_mouse < (len_target + 5)){		//停止したい距離の少し手前まで継続
@@ -119,22 +119,21 @@ void back(float len){
     con_wall.enable = false;//壁制御を無効にする
     len_target = len;//lenの値はマイナスが入っている
     end_speed = 0;
-    accel = -0.4;//速度をマイナスにするとバックする
+    accel = -0.2;//速度をマイナスにするとバックする
     max_speed = 0.1;
     MOT_POWER_ON;
     while(((len_target -10) -len_mouse) > 1000.0*((float)(tar_speed*tar_speed)-(float)(end_speed*end_speed))/(float)(2.0*accel));
     accel = 1.5;//マイナスの速度を0にするためプラスにしている
     start_timer = timer;
-	float D_len = len_mouse;
     while(len_mouse > (len_target + 1)){
-		D_len = len_mouse - D_len;
         if(tar_speed >= -1*MIN_SPEED){//MIN_SPEEDはプラスの値なので、-1を掛けてマイナスにする
             accel=0;
             tar_speed = -1*MIN_SPEED;
         }
-        if((timer - start_timer) > 200 && speed >= 0 || ((timer - start_timer) > 800){ //0.2秒経過後にケツ当たるか0.8秒経過で終了
+        if((timer - start_timer) > 200 && speed - MIN_SPEED >= 0){ //0.2秒経過後にケツ当たるか0.8秒経過で終了
             break;
         }
+		if((timer - start_timer) > 800) break;
     }
     accel = 0;
     tar_speed = 0;

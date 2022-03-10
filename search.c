@@ -421,8 +421,7 @@ short isWallonSide(short dire){
 void search_adachi(int gx, int gy)
 {
 
-	t_direction glob_nextdir;					
-	gyro_get_ref();
+	t_direction glob_nextdir;
 
 	accel=SEARCH_ACCEL;
 	do_back = -1;
@@ -432,6 +431,7 @@ void search_adachi(int gx, int gy)
 		case front:
 			if(isWallonSide(rear)){
 				back(-40);
+				gyro_get_ref();
 				straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 			}else{
 				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
@@ -503,7 +503,7 @@ void search_adachi(int gx, int gy)
 		{
 			case front:
 				len_mouse-=SLIP_DIST_SEARCH;
-				if(isWallonSide(left) && isWallonSide(right) && isWallAround(left,1) && isWallAround(right,1)){
+				if((isWallonSide(left) && sen_l.is_control) || (sen_r.is_control && isWallonSide(right))){
 					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
