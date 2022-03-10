@@ -430,7 +430,7 @@ void search_adachi(int gx, int gy)
 	{
 		case front:
 			if(isWallonSide(rear)){
-				back(-30);
+				back(-40);
 				straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 			}else{
 				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
@@ -440,7 +440,7 @@ void search_adachi(int gx, int gy)
 		case right:
 			turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);				
 			if(isWallonSide(left)){
-				back(-30);
+				back(-40);
 				straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 				do_back = INT_BACK;
 			}else{
@@ -451,7 +451,7 @@ void search_adachi(int gx, int gy)
 		case left:
 			turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
 			if(isWallonSide(right)){
-				back(-30);
+				back(-40);
 				straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 				do_back = INT_BACK;
 			}else{
@@ -515,7 +515,7 @@ void search_adachi(int gx, int gy)
 				turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
 				//slalom(90,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED,RIGHT);			
 				if(isWallonSide(left) && do_back < 0){
-					back(-30);
+					back(-40);
 					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back = INT_BACK;
 				}else{
@@ -528,7 +528,7 @@ void search_adachi(int gx, int gy)
 				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
 				if(isWallonSide(right) && do_back < 0){
-					back(-30);
+					back(-40);
 					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back = INT_BACK;
 				}else{
@@ -542,13 +542,13 @@ void search_adachi(int gx, int gy)
 				
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
 				if(isWallonSide(right) && do_back < 0){
-					back(-30);
+					back(-40);
 					straight(25,1.0,1.0,0.0);
 					do_back = INT_BACK;
 				}
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);
 				if(isWallonSide(front)){
-					back(-30);
+					back(-40);
 					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 				}else{
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);

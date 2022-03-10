@@ -132,12 +132,9 @@ void back(float len){
             accel=0;
             tar_speed = -1*MIN_SPEED;
         }
-        if((timer - start_timer) > 800 ){//0.8秒経ってもwhileを抜け出せない時の処置
-            //break;
+        if((timer - start_timer) > 200 && speed >= 0){//0.8秒経ってもwhileを抜け出せない時の処置
+            break;
         }
-		if(D_len <= 0){
-			LED(5);
-		}
     }
     accel = 0;
     tar_speed = 0;
