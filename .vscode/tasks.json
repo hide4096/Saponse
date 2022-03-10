@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build_RX",
+            "type": "shell",
+            "command": "C:/Program Files (x86)/Renesas Electronics/CS+/CC/CubeSuite+.exe",
+            "args": [
+                "/bb",
+                "${workspaceRoot}/${workspaceRootFolderName}.mtpj",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+
+        },
+        {
+            "label": "Flash_RX", // マイコンへの書き込み
+            "type": "shell",
+            "command": "C:/Program Files (x86)/Renesas Electronics/Programming Tools/Renesas Flash Programmer V3.09/RFPV3.Console.exe",
+            "args": [   // 引数を指定
+                "${workspaceRoot}/${workspaceRootFolderName}/${workspaceRootFolderName}.rpj", //　プロジェクトファイルが存在するディレクトリ
+            ],
+      }
+    ]
+}
