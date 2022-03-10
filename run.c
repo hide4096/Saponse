@@ -124,14 +124,19 @@ void back(float len){
     while(((len_target -10) -len_mouse) > 1000.0*((float)(tar_speed*tar_speed)-(float)(end_speed*end_speed))/(float)(2.0*accel));
     accel = 1.5;//マイナスの速度を0にするためプラスにしている
     start_timer = timer;
+	float D_len = len_mouse;
     while(len_mouse > (len_target + 1)){
+		D_len = len_mouse - D_len;
         if(tar_speed >= -1*MIN_SPEED){//MIN_SPEEDはプラスの値なので、-1を掛けてマイナスにする
             accel=0;
             tar_speed = -1*MIN_SPEED;
         }
         if((timer - start_timer) > 800 ){//0.8秒経ってもwhileを抜け出せない時の処置
-            break;
+            //break;
         }
+		if(D_len <= 0){
+			LED(5);
+		}
     }
     accel = 0;
     tar_speed = 0;
