@@ -504,7 +504,7 @@ void search_adachi(int gx, int gy)
 			case front:
 				len_mouse-=SLIP_DIST_SEARCH;
 				if((isWallonSide(left) && sen_l.is_control) && (sen_r.is_control && isWallonSide(right))){
-					straight(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
+					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}else{
 					straight_NC(SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);		
 				}
@@ -512,27 +512,40 @@ void search_adachi(int gx, int gy)
 				break;
 			
 			case right:
-				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
-				turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
-				//slalom(90,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED,RIGHT);			
-				if(isWallonSide(left) && do_back < 0){
+				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);
+				if(do_back < 0 && isWallonSide(left)){		
+					turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
 					back(-40);
 					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back = INT_BACK;
 				}else{
+					if(do_back < 0){
+						if(isWallonSide(front) && sen_fr.is_wall && sen_fl.is_wall){
+							running(30.0,1.0,1.5,0.0,false,300);
+							back(-15);
+						}
+					}
+					turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back--;
 				}
 				break;
 			
 			case left:
-				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);		
-				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
-				if(isWallonSide(right) && do_back < 0){
+				straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,0);
+				if(do_back < 0 && isWallonSide(right)){	
+					turn(90,TURN_ACCEL,TURN_SPEED,LEFT);
 					back(-40);
 					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back = INT_BACK;
 				}else{
+					if(do_back < 0){
+						if(isWallonSide(front) && sen_fr.is_wall && sen_fl.is_wall){
+							running(30.0,1.0,1.5,0.0,false,300);
+							back(-15);
+						}
+					}
+					turn(90,TURN_ACCEL,TURN_SPEED,LEFT);
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back--;
 				}
