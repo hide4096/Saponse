@@ -42,9 +42,9 @@
 #define SPEED_KI	(1.0)				//Iゲイン
 #define SPEED_KD	(3.5)				//Dゲイン　
 //車体中心における回転方向速度に関するフィードバックゲイン
-#define OMEGA_KP	(35.0)				//Pゲイン
-#define OMEGA_KI	(5.5)				//Iゲイン
-#define OMEGA_KD	(3.5)				//Dゲイン
+#define OMEGA_KP	(30.0)				//Pゲイン
+#define OMEGA_KI	(6.0)				//Iゲイン
+#define OMEGA_KD	(4.0)				//Dゲイン
 
 //走行パラメータ
 #define SEARCH_SPEED	(0.5)				//探索走行の速度	[m/s]
@@ -55,7 +55,7 @@
 #define SLIP_DIST_SEARCH    2
 #define SLIP_DIST_FAST      2
 
-#define INT_BACK 4
+#define INT_BACK 3
 
 #define TURN_ACCEL	(PI*10)				//超信地旋回の加速度	[rad/s^2]
 #define	TURN_SPEED	(PI*15)				//超信地旋回の最高速度	[rad/s]
@@ -64,8 +64,8 @@
 #define WAIT_TIME	0				//各動作後の待機時間	[ms]
 
 //迷路関連パラメータ
-#define GOAL_X	3		//ゴール座標(x)
-#define GOAL_Y	3		//ゴール座標(y)
+#define GOAL_X	15		//ゴール座標(x)
+#define GOAL_Y	15		//ゴール座標(y)
 
 //決定用センサパラメータ
 #define	SEN_DECISION	2000	//メニュー決定用の光センサ閾値

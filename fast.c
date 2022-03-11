@@ -8,7 +8,7 @@
 #include "interface.h"
 #include "sci.h"
 
-#define H_LIMIT 3
+#define H_LIMIT 2
 
 extern int get_nextdir(int x, int y, int mask, t_direction *dir);
 
