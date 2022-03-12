@@ -95,12 +95,6 @@ void main(void)
 					BEEP();//ゴールしたことをアピール
 					wait_ms(100);
 					BEEP();//ゴールしたことをアピール
-					search_adachi(0,0);			//スタート地点まで足立法で帰ってくる
-					turn(180,TURN_ACCEL,TURN_SPEED,RIGHT);			//帰ってきたら180度回転	
-					MOT_POWER_OFF;
-					map_write();
-					log_flag = 0;
-					BEEP();
 				}
 				
 				break;
@@ -116,7 +110,6 @@ void main(void)
 			
 				//センサーの前に手をかざしてスタート
 				if(sen_fr.value + sen_fl.value + sen_r.value + sen_l.value > SEN_DECISION * 4){
-loop:
 					BEEP();
 					map_copy();
 					degree = 0;
@@ -136,15 +129,6 @@ loop:
 					BEEP();//ゴールしたことをアピール
 					wait_ms(100);
 					BEEP();//ゴールしたことをアピール
-					search_adachi(0,0);			//スタート地点まで足立法で帰ってくる
-					turn(180,TURN_ACCEL,TURN_SPEED,RIGHT);			//帰ってきたら180度回転	
-					MOT_POWER_OFF;
-					map_write();
-					log_flag = 0;
-					BEEP();
-
-					wait_ms(2000);
-					goto loop;
 				}
 				
 				break;
