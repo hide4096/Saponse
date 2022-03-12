@@ -39,11 +39,11 @@
 //Dゲイン　二番目に調整する。	P制御によって発生した振動を抑えられる程度に調整
 //車体中心における並進方向速度に関するフィードバックゲイン
 #define SPEED_KP	(15.0)				//Pゲイン
-#define SPEED_KI	(1.0)				//Iゲイン
-#define SPEED_KD	(3.5)				//Dゲイン　
+#define SPEED_KI	(0.5)				//Iゲイン
+#define SPEED_KD	(3.0)				//Dゲイン　
 //車体中心における回転方向速度に関するフィードバックゲイン
 #define OMEGA_KP	(35.0)				//Pゲイン
-#define OMEGA_KI	(5.5)				//Iゲイン
+#define OMEGA_KI	(5.0)				//Iゲイン
 #define OMEGA_KD	(3.5)				//Dゲイン
 
 //走行パラメータ
@@ -57,7 +57,7 @@
 
 #define INT_BACK 3
 
-#define TURN_ACCEL	(PI*8)				//超信地旋回の加速度	[rad/s^2]
+#define TURN_ACCEL	(PI*7)				//超信地旋回の加速度	[rad/s^2]
 #define	TURN_SPEED	(PI*10)				//超信地旋回の最高速度	[rad/s]
 #define TURN_MIN_SPEED	(PI/10.0)			//超信地旋回の最低速度	[rad/s]
 

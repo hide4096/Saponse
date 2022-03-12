@@ -339,7 +339,7 @@ void init_all(void){
 	//直進数保存用の配列の初期化
 	for(int i=0;i<MAX_STEP;i++) stlen[i] = 0;
 	for(int i=0;i<MAX_STEP;i++) iswall[i] = 1;
-	
+	for(int i=0;i<MAX_STEP;i++) nonwall[i] = 0;
 }
 
 

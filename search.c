@@ -519,12 +519,6 @@ void search_adachi(int gx, int gy)
 					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back = INT_BACK;
 				}else{
-					if(do_back < 0){
-						if(isWallonSide(front) && sen_fr.is_wall && sen_fl.is_wall){
-							running(30.0,1.0,1.5,0.0,false,300);
-							back(-15);
-						}
-					}
 					turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back--;
@@ -539,12 +533,6 @@ void search_adachi(int gx, int gy)
 					straight_NC(HALF_SECTION+20,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back = INT_BACK;
 				}else{
-					if(do_back < 0){
-						if(isWallonSide(front) && sen_fr.is_wall && sen_fl.is_wall){
-							running(30.0,1.0,1.5,0.0,false,300);
-							back(-15);
-						}
-					}
 					turn(90,TURN_ACCEL,TURN_SPEED,LEFT);
 					straight_NC(HALF_SECTION,SEARCH_ACCEL,SEARCH_SPEED,SEARCH_SPEED);
 					do_back--;

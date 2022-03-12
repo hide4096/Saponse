@@ -119,7 +119,7 @@ void back(float len){
     con_wall.enable = false;//壁制御を無効にする
     len_target = len;//lenの値はマイナスが入っている
     end_speed = 0;
-    accel = -0.2;//速度をマイナスにするとバックする
+    accel = -0.4;//速度をマイナスにするとバックする
     max_speed = 0.1;
     MOT_POWER_ON;
     while(((len_target -10) -len_mouse) > 1000.0*((float)(tar_speed*tar_speed)-(float)(end_speed*end_speed))/(float)(2.0*accel));
@@ -130,7 +130,7 @@ void back(float len){
             accel=0;
             tar_speed = -1*MIN_SPEED;
         }
-        if((timer - start_timer) > 200 && speed - MIN_SPEED >= 0){ //0.2秒経過後にケツ当たるか0.8秒経過で終了
+        if((timer - start_timer) > 200 && (speed - MIN_SPEED) >= 0){ //0.2秒経過後にケツ当たるか0.8秒経過で終了
             break;
         }
 		if((timer - start_timer) > 800) break;

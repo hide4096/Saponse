@@ -17,12 +17,18 @@ void fast_run(int x, int y)
 //引数の座標x,yに向かって最短走行する
 	int t = 0;
 	t_direction glob_nextdir;
+	do_back = -1;
 
 	while((mypos.x != x) || (mypos.y != y)){
 		switch(get_nextdir(x,y,MASK_SECOND,&glob_nextdir)){
 			case front:
 				stlen[t]++;
 				if(!(isWallonSide(right) && isWallonSide(left))) iswall[t] = 0;
+				break;
+			case right:
+			case left:
+				nonwall[t] = isWallonSide(front);
+				t++;
 				break;
 			default:
 				t++;
@@ -86,7 +92,7 @@ void fast_run(int x, int y)
 			}else{
 				straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 			}
-			t++;	
+			t++;
 			break;
 		
 		case rear:
@@ -140,7 +146,7 @@ void fast_run(int x, int y)
 				t++;
 				straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,0);		
 				turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
-				if(isWallonSide(left) && stlen[t] >= H_LIMIT){
+				if(isWallonSide(left) && (stlen[t] >= H_LIMIT || !(nonwall[t])){
 					back(-40);
 					straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}else{
@@ -152,7 +158,7 @@ void fast_run(int x, int y)
 				t++;
 				straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,0);		
 				turn(90,TURN_ACCEL,TURN_SPEED,LEFT);				
-				if(isWallonSide(right) && stlen[t] >= H_LIMIT){
+				if(isWallonSide(right) && (stlen[t] >= H_LIMIT || !(nonwall[t]))){
 					back(-40);
 					straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}else{
