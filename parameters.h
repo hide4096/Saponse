@@ -64,8 +64,8 @@
 #define WAIT_TIME	0				//各動作後の待機時間	[ms]
 
 //迷路関連パラメータ
-#define GOAL_X	15	//ゴール座標(x)
-#define GOAL_Y	15
+#define GOAL_X	9	//ゴール座標(x)
+#define GOAL_Y	9
 		//ゴール座標(y)
 
 //決定用センサパラメータ

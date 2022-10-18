@@ -146,7 +146,7 @@ void fast_run(int x, int y)
 				t++;
 				straight_NC(HALF_SECTION,FAST_ACCEL,FAST_SPEED,0);		
 				turn(90,TURN_ACCEL,TURN_SPEED,RIGHT);
-				if(isWallonSide(left) && (stlen[t] >= H_LIMIT || !(nonwall[t])){
+				if(isWallonSide(left) && (stlen[t] >= H_LIMIT || !(nonwall[t]))){
 					back(-40);
 					straight_NC(HALF_SECTION+20,FAST_ACCEL,FAST_SPEED,FAST_SPEED);
 				}else{
